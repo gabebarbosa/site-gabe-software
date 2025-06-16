@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GABE Software</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+      color: #fff;
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+    }
+    header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      object-fit: cover;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero {
+      background-color: #fff;
+      padding: 3rem 2rem;
+      margin-top: -2rem;
+      border-radius: 15px 15px 0 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #6a1b9a;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      background: #eee;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+    .contact {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .email-link {
+      color: #6a1b9a;
+      font-weight: bold;
+      font-size: 1.1rem;
+      text-decoration: none;
+      background: #f0e6fa;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    .email-link:hover {
+      background: #e6d6f3;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .social-icons a {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: #6a1b9a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .social-icons img {
+      width: 24px;
+      height: 24px;
+      object-fit: cover;
+      filter: brightness(0) invert(1);
+    }
+    .team {
+      margin-top: 4rem;
+    }
+    .team-member {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      background: #f0f0f0;
+      padding: 1.5rem;
+      border-radius: 10px;
+    }
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    footer {
+      background-color: #ffffff;
+      padding: 2rem 1rem;
+      text-align: center;
+      color: #888;
+      font-size: 0.9rem;
+    }
+    .footer-logo {
+      margin-top: 1rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s324-c-no" alt="Logo GABE Software">
+    <h1>GABE SOFTWARE</h1>
+  </header>
+
+  <main class="hero">
+    <p>A GABE Software é especializada em <strong>consultoria em desenvolvimento de software</strong> e <strong>desenvolvimento sob encomenda</strong> de soluções digitais para empresas.</p>
+
+    <div class="team">
+      <h2>Equipe</h2>
+      <div class="team-member">
+        <img src="https://lh3.googleusercontent.com/a/ACg8ocIrb-0xCdJXasK3BKiHQS0TIM_epswzM1bJBRz55nNt8JC6KfsaVQ=s324-c-no" alt="Gabriel Barbosa">
+        <div>
+          <h3>
+            Gabriel Barbosa
+          </h3>
+          <p><strong>Fundador e Desenvolvedor Sênior</strong></p>
+          <p>Programador com mais de 15 anos de experiência em grandes projetos de software, liderando soluções robustas e escaláveis para empresas no Brasil e no exterior.</p>
+          <p><strong>Principais Tecnologias:</strong><br>
+          C# / .NET, JavaScript / TypeScript, Node.js, Vue.js, Angular, PostgreSQL, SQL Server, Docker, AWS, Git</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact">
+      <p>Entre em contato:</p>
+      <a class="email-link" href="mailto:contato.gabesoftware@gmail.com">contato.gabesoftware@gmail.com</a>
+
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/gabriel-de-lemos-barbosa/" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+        </a>
+        <a href="https://wa.me/5521973036099" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+        </a>
+        <a href="https://twitter.com/gabesoftware" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    GABE Software © 2024<br>
+    <img class="footer-logo" src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s324-c-no" alt="Logo pequena">
+  </footer>
+</body>
+</html>
