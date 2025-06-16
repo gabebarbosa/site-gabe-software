@@ -136,12 +136,37 @@
       border-radius: 50%;
       object-fit: cover;
     }
+  
+    .language-buttons {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    .language-buttons button {
+      background-color: #f0e6fa;
+      color: #6a1b9a;
+      border: none;
+      padding: 0.5rem 0.75rem;
+      margin-left: 0.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .language-buttons button:hover {
+      background-color: #e6d6f3;
+    }
   </style>
+
 </head>
 <body>
-  <header>
+  <header style="position: relative;">
     <img src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s324-c-no" alt="Logo GABE Software">
     <h1>GABE SOFTWARE</h1>
+    <div class="language-buttons">
+      <button onclick="setLanguage('pt')">🇧🇷</button>
+      <button onclick="setLanguage('en')">🇺🇸</button>
+    </div>
   </header>
 
   <main class="hero">
@@ -181,5 +206,35 @@
     GABE Software © 2024<br>
     <img class="footer-logo" src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s324-c-no" alt="Logo pequena">
   </footer>
+<script>
+  const translations = {
+    pt: {
+      description: "A GABE Software é especializada em <strong>consultoria em desenvolvimento de software</strong> e <strong>desenvolvimento sob encomenda</strong> de soluções digitais para empresas.",
+      team: "Equipe",
+      role: "Fundador e Desenvolvedor Sênior",
+      bio: "Programador com mais de 15 anos de experiência em grandes projetos de software, liderando soluções robustas e escaláveis para empresas no Brasil e no exterior.",
+      techs: "Principais Tecnologias:",
+      contact: "Entre em contato:"
+    },
+    en: {
+      description: "GABE Software specializes in <strong>software development consulting</strong> and <strong>custom digital solutions</strong> for companies.",
+      team: "Team",
+      role: "Founder and Senior Developer",
+      bio: "Developer with over 15 years of experience in large software projects, leading robust and scalable solutions for companies in Brazil and abroad.",
+      techs: "Key Technologies:",
+      contact: "Contact us:"
+    }
+  };
+
+  function setLanguage(lang) {
+    const t = translations[lang];
+    document.querySelector(".hero p").innerHTML = t.description;
+    document.querySelector(".team h2").textContent = t.team;
+    document.querySelector(".team-member p strong").textContent = t.role;
+    document.querySelectorAll(".team-member p")[1].textContent = t.bio;
+    document.querySelectorAll(".team-member p")[2].querySelector("strong").textContent = t.techs;
+    document.querySelector(".contact p").textContent = t.contact;
+  }
+</script>
 </body>
 </html>
