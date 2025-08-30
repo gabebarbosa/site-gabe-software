@@ -6,161 +6,79 @@
   <title>GABE Software</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    :root{
+      --purple:#6a1b9a; --purple-2:#8e24aa; --ink:#222; --bg:#f8f9fa; --card:#fff; --muted:#666; --border:#eee;
+      --radius:14px; --shadow:0 10px 26px rgba(0,0,0,.06); --shadow-soft:0 6px 18px rgba(0,0,0,.04);
+      --speed:220ms; --curve:cubic-bezier(.2,.8,.2,1);
     }
-    body {
-      background-color: #f8f9fa;
-      color: #333;
-      line-height: 1.6;
-    }
-    header {
-      background: linear-gradient(135deg, #6a1b9a, #8e24aa);
-      color: #fff;
-      padding: 4rem 2rem 2rem;
-      text-align: center;
-    }
-    header img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      object-fit: cover;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .hero {
-      background-color: #fff;
-      padding: 3rem 2rem;
-      margin-top: -2rem;
-      border-radius: 15px 15px 0 0;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-      max-width: 960px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-    }
-    h2 {
-      font-size: 1.8rem;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      color: #6a1b9a;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    ul li {
-      background: #eee;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      margin-bottom: 0.5rem;
-      text-align: left;
-    }
-    .contact {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .email-link {
-      color: #6a1b9a;
-      font-weight: bold;
-      font-size: 1.1rem;
-      text-decoration: none;
-      background: #f0e6fa;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
-    .email-link:hover {
-      background: #e6d6f3;
-    }
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-    .social-icons a {
-      display: inline-block;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      overflow: hidden;
-      background-color: #6a1b9a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .social-icons img {
-      width: 24px;
-      height: 24px;
-      object-fit: cover;
-      filter: brightness(0) invert(1);
-    }
-    .team {
-      margin-top: 4rem;
-    }
-    .team-member {
-      background: #f0f0f0;
-      padding: 2rem 1.5rem;
-      border-radius: 10px;
-      text-align: center;
-    }
-    .team-member img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
-    footer {
-      background-color: #ffffff;
-      padding: 2rem 1rem;
-      text-align: center;
-      color: #888;
-      font-size: 0.9rem;
-    }
-    .footer-logo {
-      margin-top: 1rem;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-  
-    .language-buttons {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-    }
-    .language-buttons button {
-      background-color: #f0e6fa;
-      color: #6a1b9a;
-      border: none;
-      padding: 0.5rem 0.75rem;
-      margin-left: 0.5rem;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .language-buttons button:hover {
-      background-color: #e6d6f3;
+    body { background-color: var(--bg); color: var(--ink); line-height: 1.6; overflow-x:hidden }
+
+    /* ===== Header ===== */
+    header { position:relative; background: linear-gradient(135deg, var(--purple), var(--purple-2)); color: #fff; padding: 4rem 2rem 2.25rem; text-align: center; overflow:hidden; }
+    header:before, header:after{content:""; position:absolute; border-radius:50%; filter:blur(40px); opacity:.28; pointer-events:none}
+    header:before{width:420px; height:420px; left:-140px; top:-120px; background: radial-gradient(closest-side, #ffffff55, transparent)}
+    header:after{width:460px; height:460px; right:-160px; top:-140px; background: radial-gradient(closest-side, #ffd7ff55, transparent)}
+    /* subtle moving shine */
+    .shine{ position:absolute; inset:0; background:linear-gradient(120deg, transparent 35%, rgba(255,255,255,.18), transparent 65%); transform:translateX(-100%); animation: shine 10s linear infinite; mix-blend-mode:soft-light }
+    @keyframes shine{ to{ transform:translateX(100%)} }
+
+    header img { width: 96px; height: 96px; border-radius: 50%; margin-bottom: 1rem; object-fit: cover; box-shadow:0 8px 28px rgba(0,0,0,.25); transform: translateZ(0); }
+    h1 { font-size: clamp(2rem, 4.6vw, 2.6rem); margin-bottom: .35rem; letter-spacing: .3px; }
+    .sub{opacity:.9; font-weight:600; letter-spacing:.2px}
+
+    .language-buttons { position: absolute; top: 1rem; right: 1rem; display: flex; gap: .5rem; z-index:1 }
+    .language-buttons button { background-color: #f0e6fa; color: var(--purple); border: 1px solid #e6d6f3; padding: 0.45rem 0.7rem; border-radius: 10px; font-weight: 700; cursor: pointer; transition: transform var(--speed) var(--curve), background-color var(--speed) var(--curve), box-shadow var(--speed) var(--curve); box-shadow:0 4px 12px rgba(106,27,154,.18) }
+    .language-buttons button:hover { background: #e6d6f3; transform: translateY(-1px); }
+
+    /* ===== Main/Hero ===== */
+    .hero { background-color: var(--card); padding: 3.2rem 2rem; margin-top: -2rem; border-radius: 18px 18px 0 0; box-shadow: var(--shadow); max-width: 1040px; margin-left: auto; margin-right: auto; position:relative }
+    .hero p { font-size: 1.12rem; margin-bottom: 1.25rem; color:var(--ink) }
+
+    h2 { font-size: clamp(1.4rem, 2.8vw, 1.8rem); margin-top: 2rem; margin-bottom: .75rem; color: var(--purple); position:relative; display:inline-block }
+    h2:after{ content:""; position:absolute; left:0; bottom:-6px; height:3px; width:0; background: linear-gradient(90deg, var(--purple), var(--purple-2)); border-radius:999px; transition:width var(--speed) var(--curve) } section.reveal.in h2:after{ width:100% }
+    section:hover h2:after{ transform: scaleX(1) }
+
+    h3 { font-size: 1.1rem; color: var(--purple); margin-bottom: .35rem; display:flex; align-items:center; gap:.5rem }
+
+    .section { margin-top: 1.25rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; box-shadow: var(--shadow-soft); transition: transform var(--speed) var(--curve), box-shadow var(--speed) var(--curve), border-color var(--speed) var(--curve); will-change: transform }
+    .card:hover{ transform: translateY(-3px); box-shadow: var(--shadow); border-color:#e7dbff }
+
+    .badge{ display:inline-block; font-size:.74rem; font-weight:800; color: var(--purple); background:#f5ecff; border:1px solid #ead8ff; padding:.38rem .62rem; border-radius:999px; margin-bottom:.55rem; letter-spacing:.3px; text-transform:uppercase }
+    .badge.alt{ color:#a76af1; background:#f3edff; border-color:#e8dbff }
+    .badge.ok{ color:#1f8f4d; background:#e9f8ef; border-color:#ccefd9 }
+
+    .grid { display: grid; gap: 1rem; }
+    @media (min-width: 820px) { .grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; } }
+    @media (max-width: 819px) { .grid.cols-3 { grid-template-columns: 1fr; } }
+
+    .contact { text-align: center; margin-top: 2rem; }
+    .email-link { color: var(--purple); font-weight: 800; font-size: 1.05rem; text-decoration: none; background: #f6f0ff; padding: 0.7rem 1.1rem; border-radius: 12px; display: inline-block; margin-bottom: 1rem; border:1px solid #e6d6f3; transition: transform var(--speed) var(--curve), background var(--speed) var(--curve) }
+    .email-link:hover { background: #efe2ff; transform: translateY(-1px) }
+
+    .social-icons { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+    .social-icons a { display: inline-flex; width: 46px; height: 46px; border-radius: 50%; overflow: hidden; background-color: var(--purple); align-items: center; justify-content: center; box-shadow:0 4px 14px rgba(106,27,154,.25); transition: transform var(--speed) var(--curve) }
+    .social-icons a:hover{ transform: translateY(-2px) }
+    .social-icons img { width: 22px; height: 22px; object-fit: cover; filter: brightness(0) invert(1); }
+
+    footer { background-color: #ffffff; padding: 2rem 1rem; text-align: center; color: #888; font-size: 0.9rem; }
+    .footer-logo { margin-top: 1rem; width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+    .muted{ color: var(--muted) }
+
+    /* ===== Scroll reveal (reduced-motion aware) ===== */
+    .reveal{ opacity:0; transform: translateY(10px); transition: opacity 420ms var(--curve), transform 420ms var(--curve) }
+    .reveal.in{ opacity:1; transform: translateY(0) }
+    @media (prefers-reduced-motion: reduce){
+      .shine{ animation:none }
+      .card, .email-link, .social-icons a{ transition:none }
+      .reveal{ opacity:1; transform:none }
     }
   </style>
-
 </head>
 <body>
-  <header style="position: relative;">
+  <header>
+    <div class="shine" aria-hidden="true"></div>
     <img src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s324-c-no" alt="Logo GABE Software">
     <h1>GABE SOFTWARE</h1>
     <div class="language-buttons">
@@ -170,71 +88,114 @@
   </header>
 
   <main class="hero">
-    <p>A GABE Software é especializada em <strong>consultoria em desenvolvimento de software</strong> e <strong>desenvolvimento sob encomenda</strong> de soluções digitais para empresas.</p>
+    <!-- Intro -->
+    <p id="intro" class="reveal">A GABE Software desenvolve <strong>soluções digitais sob encomenda</strong> para empresas de todos os portes, ajudando a transformar ideias em softwares funcionais, seguros e escaláveis.</p>
 
-    <div class="team">
-      <h2>Equipe</h2>
-      <div class="team-member">
-        <img src="https://lh3.googleusercontent.com/a/ACg8ocIrb-0xCdJXasK3BKiHQS0TIM_epswzM1bJBRz55nNt8JC6KfsaVQ=s324-c-no" alt="Gabriel Barbosa">
-        <h3>Gabriel Barbosa</h3>
-        <p><strong>Fundador e Desenvolvedor Sênior</strong></p>
-        <p>Programador com mais de 15 anos de experiência em grandes projetos de software, liderando soluções robustas e escaláveis para empresas no Brasil e no exterior.</p>
-        <p><strong>Principais Tecnologias:</strong><br>
-        C# / .NET, JavaScript / TypeScript, Node.js, Vue.js, Angular, PostgreSQL, SQL Server, Docker, AWS, Git</p>
+    <!-- Serviços com labels -->
+    <section id="servicos" class="section reveal">
+      <h2 id="servicos-title">Serviços</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <span class="badge ok" id="svc-custom-badge">Sob medida</span>
+          <h3 id="svc-custom">Software Sob Medida</h3>
+          <p id="svc-custom-desc" class="muted">Aplicações personalizadas para necessidades específicas do seu negócio, com foco em usabilidade, segurança e performance.</p>
+        </div>
+        <div class="card">
+          <span class="badge" id="svc-int-badge">APIs • ETL • Webhooks</span>
+          <h3 id="svc-int">Integrações</h3>
+          <p id="svc-int-desc" class="muted">Conectamos sistemas diferentes por meio de APIs e pipelines de dados para garantir fluxo confiável de informações entre plataformas.</p>
+        </div>
+        <div class="card">
+          <span class="badge alt" id="svc-obs-badge">Métricas • Logs • Traces</span>
+          <h3 id="svc-obs">Observabilidade</h3>
+          <p id="svc-obs-desc" class="muted">Dashboards e notificações para acompanhar a saúde tecnológica em tempo real e antever problemas.</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="contact">
-      <p>Entre em contato:</p>
+    <!-- Contato -->
+    <div class="contact section reveal">
+      <p id="contact">Entre em contato:</p>
       <a class="email-link" href="mailto:contato.gabesoftware@gmail.com">contato.gabesoftware@gmail.com</a>
-
       <div class="social-icons">
-        <a href="https://www.linkedin.com/in/gabriel-de-lemos-barbosa/" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+        <a href="https://www.linkedin.com/in/gabriel-de-lemos-barbosa/" target="_blank" aria-label="LinkedIn">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
         </a>
-        <a href="https://wa.me/5521973036099" target="_blank">
+        <a href="https://wa.me/5521973036099" target="_blank" aria-label="WhatsApp">
           <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
         </a>
-        <a href="https://twitter.com/gabesoftware" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+        <a href="https://twitter.com/gabesoftware" target="_blank" aria-label="Twitter/X">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter/X">
         </a>
       </div>
     </div>
   </main>
 
   <footer>
-    GABE Software © 2024<br>
+    GABE Software LTDA · CNPJ 61.424.494/0001-26 © <span id="year"></span><br>
     <img class="footer-logo" src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s324-c-no" alt="Logo pequena">
   </footer>
-<script>
-  const translations = {
-    pt: {
-      description: "A GABE Software é especializada em <strong>consultoria em desenvolvimento de software</strong> e <strong>desenvolvimento sob encomenda</strong> de soluções digitais para empresas.",
-      team: "Equipe",
-      role: "Fundador e Desenvolvedor Sênior",
-      bio: "Programador com mais de 15 anos de experiência em grandes projetos de software, liderando soluções robustas e escaláveis para empresas no Brasil e no exterior.",
-      techs: "Principais Tecnologias:",
-      contact: "Entre em contato:"
-    },
-    en: {
-      description: "GABE Software specializes in <strong>software development consulting</strong> and <strong>custom digital solutions</strong> for companies.",
-      team: "Team",
-      role: "Founder and Senior Developer",
-      bio: "Developer with over 15 years of experience in large software projects, leading robust and scalable solutions for companies in Brazil and abroad.",
-      techs: "Key Technologies:",
-      contact: "Contact us:"
-    }
-  };
 
-  function setLanguage(lang) {
-    const t = translations[lang];
-    document.querySelector(".hero p").innerHTML = t.description;
-    document.querySelector(".team h2").textContent = t.team;
-    document.querySelector(".team-member p strong").textContent = t.role;
-    document.querySelectorAll(".team-member p")[1].textContent = t.bio;
-    document.querySelectorAll(".team-member p")[2].querySelector("strong").textContent = t.techs;
-    document.querySelector(".contact p").textContent = t.contact;
-  }
-</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const translations = {
+      pt: {
+        intro: "A GABE Software desenvolve <strong>soluções digitais sob encomenda</strong> para empresas de todos os portes, ajudando a transformar ideias em softwares funcionais, seguros e escaláveis.",
+        servicos: "Serviços",
+        svcCustomBadge: "Sob medida",
+        svcCustom: "Software Sob Medida",
+        svcCustomDesc: "Aplicações personalizadas para necessidades específicas do seu negócio, com foco em usabilidade, segurança e performance.",
+        svcIntBadge: "APIs • ETL • Webhooks",
+        svcInt: "Integrações",
+        svcIntDesc: "Conectamos sistemas diferentes por meio de APIs e pipelines de dados para garantir fluxo confiável de informações entre plataformas.",
+        svcObsBadge: "Métricas • Logs • Traces",
+        svcObs: "Observabilidade",
+        svcObsDesc: "Dashboards e notificações para acompanhar a saúde tecnológica em tempo real e antever problemas.",
+        contact: "Entre em contato:"
+      },
+      en: {
+        intro: "GABE Software develops <strong>custom digital solutions</strong> for companies of all sizes, turning ideas into functional, secure, and scalable software.",
+        servicos: "Services",
+        svcCustomBadge: "Tailored",
+        svcCustom: "Custom Software",
+        svcCustomDesc: "Tailored applications for your company's specific needs, focused on usability, security, and performance.",
+        svcIntBadge: "APIs • ETL • Webhooks",
+        svcInt: "Integrations",
+        svcIntDesc: "We connect different systems through APIs and data pipelines to ensure a reliable information flow across platforms.",
+        svcObsBadge: "Metrics • Logs • Traces",
+        svcObs: "Observability",
+        svcObsDesc: "Dashboards and notifications to monitor technology health in real time and anticipate issues.",
+        contact: "Contact us:"
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+      document.getElementById('intro').innerHTML = t.intro;
+      document.getElementById('servicos-title').textContent = t.servicos;
+      document.getElementById('svc-custom-badge').textContent = t.svcCustomBadge;
+      document.getElementById('svc-custom').textContent = t.svcCustom;
+      document.getElementById('svc-custom-desc').textContent = t.svcCustomDesc;
+      document.getElementById('svc-int-badge').textContent = t.svcIntBadge;
+      document.getElementById('svc-int').textContent = t.svcInt;
+      document.getElementById('svc-int-desc').textContent = t.svcIntDesc;
+      document.getElementById('svc-obs-badge').textContent = t.svcObsBadge;
+      document.getElementById('svc-obs').textContent = t.svcObs;
+      document.getElementById('svc-obs-desc').textContent = t.svcObsDesc;
+      document.getElementById('contact').textContent = t.contact;
+    }
+
+    // Intersection Observer for reveal
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced && 'IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, {threshold: .12});
+      document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el=> el.classList.add('in'));
+    }
+  </script>
 </body>
 </html>
