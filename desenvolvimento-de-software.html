@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desenvolvimento de Software — GABE Software</title>
+  <meta name="description" content="Desenvolvimento de sistemas sob medida — desktop, web, mobile, APIs e integrações. Modernização de sistemas legados. GABE Software.">
+  <link rel="canonical" href="https://gabesoftware.com.br/desenvolvimento-de-software.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gabesoftware.com.br/desenvolvimento-de-software.html">
+  <meta property="og:title" content="Desenvolvimento de Software — GABE Software">
+  <meta property="og:description" content="Sistemas sob medida e modernização de aplicações existentes — desktop, web, mobile e integrações.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Desenvolvimento de Software — GABE Software">
+  <meta name="twitter:description" content="Sistemas sob medida e modernização de aplicações existentes — desktop, web, mobile e integrações.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo" id="skip-link">Ir para o conteúdo</a>
+
+  <header>
+    <div class="shine" aria-hidden="true"></div>
+    <a href="index.html" class="logo-link">
+      <img src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s324-c-no" alt="Logo GABE Software">
+      <h1>GABE SOFTWARE</h1>
+    </a>
+    <p class="sub" id="hero-sub">Tecnologia, consultoria e capacitação</p>
+    <div class="language-buttons">
+      <button onclick="setLanguage('pt')" aria-label="Português">🇧🇷</button>
+      <button onclick="setLanguage('en')" aria-label="English">🇺🇸</button>
+    </div>
+  </header>
+
+  <nav class="site-nav" aria-label="Navegação principal">
+    <div class="nav-inner">
+      <ul>
+        <li><a href="index.html" id="nav-home">Início</a></li>
+        <li><a href="desenvolvimento-de-software.html" class="active" id="nav-dev">Desenvolvimento</a></li>
+        <li><a href="consultoria-em-tecnologia.html" id="nav-cons">Consultoria</a></li>
+        <li><a href="ia-e-automacao.html" id="nav-ia">IA & Automação</a></li>
+        <li><a href="ensino-e-capacitacao.html" id="nav-ensino">Ensino</a></li>
+        <li><a href="produtos.html" id="nav-prod">Produtos</a></li>
+        <li><a href="index.html#sobre" id="nav-sobre">Sobre</a></li>
+        <li><a href="index.html#contato" id="nav-contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="hero" id="conteudo">
+    <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+      <a href="index.html" id="breadcrumb-home">Início</a> › <span id="breadcrumb-current">Desenvolvimento de Software</span>
+    </nav>
+
+    <h2 class="page-title reveal" id="page-title">Desenvolvimento de Software</h2>
+    <p class="lead reveal" id="page-intro">Criamos novos sistemas e evoluímos aplicações existentes — do desktop ao mobile, com integrações confiáveis entre plataformas.</p>
+
+    <section class="section reveal">
+      <div class="grid cols-2">
+        <div class="card">
+          <span class="badge ok" id="block1-badge">Sob medida</span>
+          <h3 id="block1-title">Desenvolvimento de sistemas sob medida</h3>
+          <ul class="service-list">
+            <li id="li-desktop">Desktop</li>
+            <li id="li-web">Web</li>
+            <li id="li-mobile">Mobile</li>
+            <li id="li-api">APIs e integrações</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="badge" id="block2-badge">Legados</span>
+          <h3 id="block2-title">Modernização de sistemas legados</h3>
+          <p id="block2-desc" class="muted">Atualizamos arquitetura, código e infraestrutura de aplicações existentes para torná-las mais seguras, performáticas e preparadas para evolução contínua.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="card">
+        <h3 id="block3-title">Criação e evolução de sistemas</h3>
+        <p id="block3-desc" class="muted">Atuamos tanto na criação de novos sistemas quanto na evolução de aplicações já em operação — integrando plataformas por meio de APIs, ETL e webhooks quando necessário.</p>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="cta-box">
+        <h2 id="contact-title">Vamos conversar?</h2>
+        <p id="contact-desc">Conte qual desafio tecnológico você precisa resolver.</p>
+        <a class="email-link" href="mailto:contato.gabesoftware@gmail.com" id="contact-btn">Entrar em contato</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    GABE Software LTDA · CNPJ 61.424.494/0001-26 © <span id="year"></span><br>
+    <img class="footer-logo" src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s324-c-no" alt="Logo GABE Software">
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script>
+    const pageTranslations = {
+      pt: {
+        metaTitle: 'Desenvolvimento de Software — GABE Software',
+        metaDesc: 'Desenvolvimento de sistemas sob medida — desktop, web, mobile, APIs e integrações. Modernização de sistemas legados.',
+        ogTitle: 'Desenvolvimento de Software — GABE Software',
+        ogDesc: 'Sistemas sob medida e modernização de aplicações existentes — desktop, web, mobile e integrações.',
+        breadcrumbCurrent: 'Desenvolvimento de Software',
+        pageTitle: 'Desenvolvimento de Software',
+        pageIntro: 'Criamos novos sistemas e evoluímos aplicações existentes — do desktop ao mobile, com integrações confiáveis entre plataformas.',
+        block1Badge: 'Sob medida', block1Title: 'Desenvolvimento de sistemas sob medida',
+        liDesktop: 'Desktop', liWeb: 'Web', liMobile: 'Mobile', liApi: 'APIs e integrações',
+        block2Badge: 'Legados', block2Title: 'Modernização de sistemas legados',
+        block2Desc: 'Atualizamos arquitetura, código e infraestrutura de aplicações existentes para torná-las mais seguras, performáticas e preparadas para evolução contínua.',
+        block3Title: 'Criação e evolução de sistemas',
+        block3Desc: 'Atuamos tanto na criação de novos sistemas quanto na evolução de aplicações já em operação — integrando plataformas por meio de APIs, ETL e webhooks quando necessário.',
+        contactDesc: 'Precisa desenvolver um sistema novo ou modernizar um existente? Entre em contato.'
+      },
+      en: {
+        metaTitle: 'Software Development — GABE Software',
+        metaDesc: 'Custom software development — desktop, web, mobile, APIs and integrations. Legacy system modernization.',
+        ogTitle: 'Software Development — GABE Software',
+        ogDesc: 'Custom systems and modernization of existing applications — desktop, web, mobile, and integrations.',
+        breadcrumbCurrent: 'Software Development',
+        pageTitle: 'Software Development',
+        pageIntro: 'We build new systems and evolve existing applications — from desktop to mobile, with reliable integrations across platforms.',
+        block1Badge: 'Custom', block1Title: 'Custom software development',
+        liDesktop: 'Desktop', liWeb: 'Web', liMobile: 'Mobile', liApi: 'APIs and integrations',
+        block2Badge: 'Legacy', block2Title: 'Legacy system modernization',
+        block2Desc: 'We update architecture, code, and infrastructure of existing applications to make them more secure, performant, and ready for continuous evolution.',
+        block3Title: 'Building and evolving systems',
+        block3Desc: 'We work on both new systems and evolving applications already in production — integrating platforms through APIs, ETL, and webhooks when needed.',
+        contactDesc: 'Need to build a new system or modernize an existing one? Get in touch.'
+      }
+    };
+
+    const pageTextIds = [
+      ['breadcrumb-current','breadcrumbCurrent'], ['page-title','pageTitle'], ['page-intro','pageIntro'],
+      ['block1-badge','block1Badge'], ['block1-title','block1Title'],
+      ['li-desktop','liDesktop'], ['li-web','liWeb'], ['li-mobile','liMobile'], ['li-api','liApi'],
+      ['block2-badge','block2Badge'], ['block2-title','block2Title'], ['block2-desc','block2Desc'],
+      ['block3-title','block3Title'], ['block3-desc','block3Desc'], ['contact-desc','contactDesc']
+    ];
+
+    function setLanguage(lang) { applySiteLanguage(lang, pageTranslations, pageTextIds); }
+  </script>
+</body>
+</html>

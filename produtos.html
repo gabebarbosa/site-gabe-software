@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos & Soluções — GABE Software</title>
+  <meta name="description" content="Produtos e soluções próprias da GABE Software em desenvolvimento. Tecnologia aplicada a necessidades reais.">
+  <link rel="canonical" href="https://gabesoftware.com.br/produtos.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gabesoftware.com.br/produtos.html">
+  <meta property="og:title" content="Produtos & Soluções — GABE Software">
+  <meta property="og:description" content="Estamos desenvolvendo soluções próprias para transformar necessidades reais em produtos de tecnologia.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Produtos & Soluções — GABE Software">
+  <meta name="twitter:description" content="Estamos desenvolvendo soluções próprias para transformar necessidades reais em produtos de tecnologia.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo" id="skip-link">Ir para o conteúdo</a>
+
+  <header>
+    <div class="shine" aria-hidden="true"></div>
+    <a href="index.html" class="logo-link">
+      <img src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s324-c-no" alt="Logo GABE Software">
+      <h1>GABE SOFTWARE</h1>
+    </a>
+    <p class="sub" id="hero-sub">Tecnologia, consultoria e capacitação</p>
+    <div class="language-buttons">
+      <button onclick="setLanguage('pt')" aria-label="Português">🇧🇷</button>
+      <button onclick="setLanguage('en')" aria-label="English">🇺🇸</button>
+    </div>
+  </header>
+
+  <nav class="site-nav" aria-label="Navegação principal">
+    <div class="nav-inner">
+      <ul>
+        <li><a href="index.html" id="nav-home">Início</a></li>
+        <li><a href="desenvolvimento-de-software.html" id="nav-dev">Desenvolvimento</a></li>
+        <li><a href="consultoria-em-tecnologia.html" id="nav-cons">Consultoria</a></li>
+        <li><a href="ia-e-automacao.html" id="nav-ia">IA & Automação</a></li>
+        <li><a href="ensino-e-capacitacao.html" id="nav-ensino">Ensino</a></li>
+        <li><a href="produtos.html" class="active" id="nav-prod">Produtos</a></li>
+        <li><a href="index.html#sobre" id="nav-sobre">Sobre</a></li>
+        <li><a href="index.html#contato" id="nav-contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="hero" id="conteudo">
+    <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+      <a href="index.html" id="breadcrumb-home">Início</a> › <span id="breadcrumb-current">Produtos & Soluções</span>
+    </nav>
+
+    <h2 class="page-title reveal" id="page-title">Produtos & Soluções</h2>
+    <p class="lead reveal" id="page-intro">Soluções próprias em desenvolvimento, construídas a partir de necessidades reais identificadas na prática.</p>
+
+    <section class="section reveal">
+      <div class="products-placeholder">
+        <p id="prod-desc">Estamos desenvolvendo soluções próprias para transformar necessidades reais em produtos de tecnologia.</p>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="card">
+        <h3 id="block1-title">Em breve</h3>
+        <p id="block1-desc" class="muted">Esta área será atualizada conforme os produtos forem lançados. Se quiser ser avisado ou conversar sobre uma necessidade específica, entre em contato.</p>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="cta-box">
+        <h2 id="contact-title">Vamos conversar?</h2>
+        <p id="contact-desc">Conte qual desafio tecnológico você precisa resolver.</p>
+        <a class="email-link" href="mailto:contato.gabesoftware@gmail.com" id="contact-btn">Entrar em contato</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    GABE Software LTDA · CNPJ 61.424.494/0001-26 © <span id="year"></span><br>
+    <img class="footer-logo" src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s324-c-no" alt="Logo GABE Software">
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script>
+    const pageTranslations = {
+      pt: {
+        metaTitle: 'Produtos & Soluções — GABE Software',
+        metaDesc: 'Produtos e soluções próprias da GABE Software em desenvolvimento. Tecnologia aplicada a necessidades reais.',
+        ogTitle: 'Produtos & Soluções — GABE Software',
+        ogDesc: 'Estamos desenvolvendo soluções próprias para transformar necessidades reais em produtos de tecnologia.',
+        breadcrumbCurrent: 'Produtos & Soluções',
+        pageTitle: 'Produtos & Soluções',
+        pageIntro: 'Soluções próprias em desenvolvimento, construídas a partir de necessidades reais identificadas na prática.',
+        prodDesc: 'Estamos desenvolvendo soluções próprias para transformar necessidades reais em produtos de tecnologia.',
+        block1Title: 'Em breve',
+        block1Desc: 'Esta área será atualizada conforme os produtos forem lançados. Se quiser ser avisado ou conversar sobre uma necessidade específica, entre em contato.',
+        contactDesc: 'Tem interesse nos nossos produtos ou quer saber mais? Entre em contato.'
+      },
+      en: {
+        metaTitle: 'Products & Solutions — GABE Software',
+        metaDesc: 'GABE Software in-house products and solutions in development. Technology applied to real needs.',
+        ogTitle: 'Products & Solutions — GABE Software',
+        ogDesc: 'We are developing in-house solutions to turn real needs into technology products.',
+        breadcrumbCurrent: 'Products & Solutions',
+        pageTitle: 'Products & Solutions',
+        pageIntro: 'In-house solutions in development, built from real needs identified in practice.',
+        prodDesc: 'We are developing in-house solutions to turn real needs into technology products.',
+        block1Title: 'Coming soon',
+        block1Desc: 'This section will be updated as products are launched. If you want to be notified or discuss a specific need, get in touch.',
+        contactDesc: 'Interested in our products or want to learn more? Get in touch.'
+      }
+    };
+
+    const pageTextIds = [
+      ['breadcrumb-current','breadcrumbCurrent'], ['page-title','pageTitle'], ['page-intro','pageIntro'],
+      ['prod-desc','prodDesc'], ['block1-title','block1Title'], ['block1-desc','block1Desc'],
+      ['contact-desc','contactDesc']
+    ];
+
+    function setLanguage(lang) { applySiteLanguage(lang, pageTranslations, pageTextIds); }
+  </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ensino & Capacitação — GABE Software</title>
+  <meta name="description" content="Aulas particulares, mentoria em programação, treinamentos corporativos, workshops e capacitação de equipes de desenvolvimento. GABE Software.">
+  <link rel="canonical" href="https://gabesoftware.com.br/ensino-e-capacitacao.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gabesoftware.com.br/ensino-e-capacitacao.html">
+  <meta property="og:title" content="Ensino & Capacitação — GABE Software">
+  <meta property="og:description" content="Formação prática em programação e desenvolvimento de software para profissionais, empresas e instituições de ensino.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ensino & Capacitação — GABE Software">
+  <meta name="twitter:description" content="Formação prática em programação e desenvolvimento de software para profissionais, empresas e instituições de ensino.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo" id="skip-link">Ir para o conteúdo</a>
+
+  <header>
+    <div class="shine" aria-hidden="true"></div>
+    <a href="index.html" class="logo-link">
+      <img src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s324-c-no" alt="Logo GABE Software">
+      <h1>GABE SOFTWARE</h1>
+    </a>
+    <p class="sub" id="hero-sub">Tecnologia, consultoria e capacitação</p>
+    <div class="language-buttons">
+      <button onclick="setLanguage('pt')" aria-label="Português">🇧🇷</button>
+      <button onclick="setLanguage('en')" aria-label="English">🇺🇸</button>
+    </div>
+  </header>
+
+  <nav class="site-nav" aria-label="Navegação principal">
+    <div class="nav-inner">
+      <ul>
+        <li><a href="index.html" id="nav-home">Início</a></li>
+        <li><a href="desenvolvimento-de-software.html" id="nav-dev">Desenvolvimento</a></li>
+        <li><a href="consultoria-em-tecnologia.html" id="nav-cons">Consultoria</a></li>
+        <li><a href="ia-e-automacao.html" id="nav-ia">IA & Automação</a></li>
+        <li><a href="ensino-e-capacitacao.html" class="active" id="nav-ensino">Ensino</a></li>
+        <li><a href="produtos.html" id="nav-prod">Produtos</a></li>
+        <li><a href="index.html#sobre" id="nav-sobre">Sobre</a></li>
+        <li><a href="index.html#contato" id="nav-contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="hero" id="conteudo">
+    <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+      <a href="index.html" id="breadcrumb-home">Início</a> › <span id="breadcrumb-current">Ensino & Capacitação</span>
+    </nav>
+
+    <h2 class="page-title reveal" id="page-title">Ensino & Capacitação</h2>
+    <p class="lead reveal" id="page-intro">Formação prática em programação e desenvolvimento de software, adaptada ao nível e ao objetivo de cada público.</p>
+
+    <section class="section reveal">
+      <div class="grid cols-3">
+        <div class="card">
+          <span class="badge ok" id="block1-badge">Profissionais</span>
+          <h3 id="block1-title">Profissionais e estudantes</h3>
+          <ul class="service-list">
+            <li id="block1-li1">Aulas particulares</li>
+            <li id="block1-li2">Mentoria em programação</li>
+            <li id="block1-li3">Programação e desenvolvimento de software</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="badge" id="block2-badge">Empresas</span>
+          <h3 id="block2-title">Empresas</h3>
+          <ul class="service-list">
+            <li id="block2-li1">Treinamentos corporativos</li>
+            <li id="block2-li2">Capacitação de equipes de desenvolvimento</li>
+            <li id="block2-li3">Workshops técnicos</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="badge alt" id="block3-badge">Instituições</span>
+          <h3 id="block3-title">Instituições de ensino</h3>
+          <ul class="service-list">
+            <li id="block3-li1">Cursos</li>
+            <li id="block3-li2">Workshops</li>
+            <li id="block3-li3">Programas de capacitação em tecnologia</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="cta-box">
+        <h2 id="contact-title">Vamos conversar?</h2>
+        <p id="contact-desc">Conte qual desafio tecnológico você precisa resolver.</p>
+        <a class="email-link" href="mailto:contato.gabesoftware@gmail.com" id="contact-btn">Entrar em contato</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    GABE Software LTDA · CNPJ 61.424.494/0001-26 © <span id="year"></span><br>
+    <img class="footer-logo" src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s324-c-no" alt="Logo GABE Software">
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script>
+    const pageTranslations = {
+      pt: {
+        metaTitle: 'Ensino & Capacitação — GABE Software',
+        metaDesc: 'Aulas particulares, mentoria em programação, treinamentos corporativos, workshops e capacitação de equipes de desenvolvimento.',
+        ogTitle: 'Ensino & Capacitação — GABE Software',
+        ogDesc: 'Formação prática em programação e desenvolvimento de software para profissionais, empresas e instituições de ensino.',
+        breadcrumbCurrent: 'Ensino & Capacitação',
+        pageTitle: 'Ensino & Capacitação',
+        pageIntro: 'Formação prática em programação e desenvolvimento de software, adaptada ao nível e ao objetivo de cada público.',
+        block1Badge: 'Profissionais', block1Title: 'Profissionais e estudantes',
+        block1Li1: 'Aulas particulares', block1Li2: 'Mentoria em programação', block1Li3: 'Programação e desenvolvimento de software',
+        block2Badge: 'Empresas', block2Title: 'Empresas',
+        block2Li1: 'Treinamentos corporativos', block2Li2: 'Capacitação de equipes de desenvolvimento', block2Li3: 'Workshops técnicos',
+        block3Badge: 'Instituições', block3Title: 'Instituições de ensino',
+        block3Li1: 'Cursos', block3Li2: 'Workshops', block3Li3: 'Programas de capacitação em tecnologia',
+        contactDesc: 'Precisa de aulas, mentoria ou treinamento para sua equipe? Entre em contato.'
+      },
+      en: {
+        metaTitle: 'Education & Training — GABE Software',
+        metaDesc: 'Private lessons, programming mentoring, corporate training, workshops, and software development team upskilling.',
+        ogTitle: 'Education & Training — GABE Software',
+        ogDesc: 'Practical training in programming and software development for professionals, companies, and educational institutions.',
+        breadcrumbCurrent: 'Education & Training',
+        pageTitle: 'Education & Training',
+        pageIntro: 'Practical training in programming and software development, tailored to each audience\'s level and goals.',
+        block1Badge: 'Professionals', block1Title: 'Professionals and students',
+        block1Li1: 'Private lessons', block1Li2: 'Programming mentoring', block1Li3: 'Programming and software development',
+        block2Badge: 'Companies', block2Title: 'Companies',
+        block2Li1: 'Corporate training', block2Li2: 'Software development team upskilling', block2Li3: 'Technical workshops',
+        block3Badge: 'Institutions', block3Title: 'Educational institutions',
+        block3Li1: 'Courses', block3Li2: 'Workshops', block3Li3: 'Technology training programs',
+        contactDesc: 'Need classes, mentoring, or training for your team? Get in touch.'
+      }
+    };
+
+    const pageTextIds = [
+      ['breadcrumb-current','breadcrumbCurrent'], ['page-title','pageTitle'], ['page-intro','pageIntro'],
+      ['block1-badge','block1Badge'], ['block1-title','block1Title'], ['block1-li1','block1Li1'], ['block1-li2','block1Li2'], ['block1-li3','block1Li3'],
+      ['block2-badge','block2Badge'], ['block2-title','block2Title'], ['block2-li1','block2Li1'], ['block2-li2','block2Li2'], ['block2-li3','block2Li3'],
+      ['block3-badge','block3Badge'], ['block3-title','block3Title'], ['block3-li1','block3Li1'], ['block3-li2','block3Li2'], ['block3-li3','block3Li3'],
+      ['contact-desc','contactDesc']
+    ];
+
+    function setLanguage(lang) { applySiteLanguage(lang, pageTranslations, pageTextIds); }
+  </script>
+</body>
+</html>
