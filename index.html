@@ -44,6 +44,7 @@
         <li><a href="produtos.html" id="nav-prod">Produtos</a></li>
         <li><a href="#sobre" id="nav-sobre">Sobre</a></li>
         <li><a href="#contato" id="nav-contato">Contato</a></li>
+        <li><a href="#jogos" id="nav-jogos">Jogos</a></li>
       </ul>
     </div>
   </nav>
@@ -54,7 +55,7 @@
     <section id="areas" class="section reveal" aria-labelledby="areas-title">
       <h2 id="areas-title">Áreas de atuação</h2>
       <p class="section-intro" id="areas-intro">Conheça cada frente de trabalho e como podemos ajudar no seu contexto.</p>
-      <div class="grid cols-5">
+      <div class="grid cols-areas">
         <div class="card">
           <span class="badge ok" id="area-dev-badge">Software</span>
           <h3 id="area-dev-title">Desenvolvimento de Software</h3>
@@ -138,6 +139,39 @@
         </div>
       </div>
     </section>
+
+    <section id="jogos" class="section reveal" aria-labelledby="jogos-title">
+      <h2 id="jogos-title">Jogos</h2>
+      <p class="section-intro" id="jogos-intro">Projetos de jogos desenvolvidos pela GABE Software. Versões em homologação podem ser testadas antes do lançamento.</p>
+      <div class="grid cols-areas">
+        <div class="card game-card">
+          <span class="badge alt" id="game-gdp-badge">Em desenvolvimento</span>
+          <h3 id="game-gdp-title">Guerra de Planetas</h3>
+          <p id="game-gdp-desc" class="muted">Jogo arcade no navegador: você controla um planeta, muda de órbita para coletar recursos e usa gravidade e propulsores para crescer e competir contra rivais.</p>
+          <a class="game-demo-link" href="guerra-de-planetas.html" aria-labelledby="game-gdp-link game-gdp-title">
+            <span class="game-demo-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="32" cy="34" rx="26" ry="9" stroke="#e1c4ff" stroke-width="2.5" transform="rotate(-18 32 34)" opacity=".95"/>
+                <ellipse cx="32" cy="34" rx="26" ry="9" stroke="#b388ff" stroke-width="1.5" transform="rotate(-18 32 34)" opacity=".55"/>
+                <circle cx="32" cy="32" r="14" fill="url(#planet-core)"/>
+                <circle cx="27" cy="27" r="4" fill="#fff" opacity=".22"/>
+                <defs>
+                  <radialGradient id="planet-core" cx="0.35" cy="0.35" r="0.75">
+                    <stop offset="0%" stop-color="#ce93d8"/>
+                    <stop offset="55%" stop-color="#7b1fa2"/>
+                    <stop offset="100%" stop-color="#4a148c"/>
+                  </radialGradient>
+                </defs>
+              </svg>
+            </span>
+            <span class="game-demo-text">
+              <span class="game-demo-cta" id="game-gdp-link">Jogue agora a demo</span>
+              <span class="game-demo-hint" id="game-gdp-hint">Versão HML · guerra-de-planetas</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -171,7 +205,15 @@
         aboutBio: 'Programador com mais de 15 anos de experiência em grandes projetos de software, liderando soluções robustas e escaláveis para empresas no Brasil e no exterior.',
         aboutTechLabel: 'Principais tecnologias:',
         aboutCompany: 'GABE Software LTDA · CNPJ 61.424.494/0001-26',
-        contactTitle: 'Vamos conversar?'
+        contactTitle: 'Vamos conversar?',
+        navJogos: 'Jogos',
+        jogosTitle: 'Jogos',
+        jogosIntro: 'Projetos de jogos desenvolvidos pela GABE Software. Versões em homologação podem ser testadas antes do lançamento.',
+        gameGdpBadge: 'Em desenvolvimento',
+        gameGdpTitle: 'Guerra de Planetas',
+        gameGdpDesc: 'Jogo arcade no navegador: você controla um planeta, muda de órbita para coletar recursos e usa gravidade e propulsores para crescer e competir contra rivais.',
+        gameGdpLink: 'Jogue agora a demo',
+        gameGdpHint: 'Versão HML · guerra-de-planetas'
       },
       en: {
         metaTitle: 'GABE Software — Technology, Consulting and Training',
@@ -196,7 +238,15 @@
         aboutBio: 'Developer with over 15 years of experience in large software projects, leading robust and scalable solutions for companies in Brazil and abroad.',
         aboutTechLabel: 'Key technologies:',
         aboutCompany: 'GABE Software LTDA · CNPJ 61.424.494/0001-26',
-        contactTitle: 'Let\'s talk?'
+        contactTitle: 'Let\'s talk?',
+        navJogos: 'Games',
+        jogosTitle: 'Games',
+        jogosIntro: 'Game projects developed by GABE Software. Staging builds can be tried before release.',
+        gameGdpBadge: 'In development',
+        gameGdpTitle: 'Guerra de Planetas',
+        gameGdpDesc: 'Browser arcade game: control a planet, shift orbits to collect resources, and use gravity and thrusters to grow and compete against rivals.',
+        gameGdpLink: 'Play the demo now',
+        gameGdpHint: 'HML build · guerra-de-planetas'
       }
     };
 
@@ -209,6 +259,8 @@
       ['area-prod-badge','areaProdBadge'], ['area-prod-title','areaProdTitle'], ['area-prod-desc','areaProdDesc'], ['area-prod-link','areaProdLink'],
       ['diff-title','diffTitle'], ['diff1-title','diff1Title'], ['diff1-desc','diff1Desc'], ['diff2-title','diff2Title'], ['diff2-desc','diff2Desc'], ['diff3-title','diff3Title'], ['diff3-desc','diff3Desc'],
       ['sobre-title','sobreTitle'], ['about-role','aboutRole'], ['about-bio','aboutBio'], ['about-tech-label','aboutTechLabel'], ['about-company','aboutCompany'],
+      ['nav-jogos','navJogos'], ['jogos-title','jogosTitle'], ['jogos-intro','jogosIntro'],
+      ['game-gdp-badge','gameGdpBadge'], ['game-gdp-title','gameGdpTitle'], ['game-gdp-desc','gameGdpDesc'], ['game-gdp-link','gameGdpLink'], ['game-gdp-hint','gameGdpHint'],
       ['contact-title','contactTitle'], ['contact-desc','contactDesc']
     ];
 
