@@ -104,6 +104,19 @@ h3 { font-size: 1.1rem; color: var(--purple); margin-bottom: .35rem; line-height
   .game-demo-icon svg { width:36px; height:36px; }
   .game-demo-cta { font-size:.98rem; }
 }
+.game-demo-link--pixel {
+  background: linear-gradient(135deg, #0d0818, #2a1450);
+  border-color: #ff2bd6;
+  box-shadow: 0 8px 24px rgba(255,43,214,.22);
+}
+.game-demo-link--pixel:hover { border-color: #ff6ae8; box-shadow: 0 12px 28px rgba(255,43,214,.32); }
+.game-demo-icon--pixel {
+  border-radius: 10px;
+  background: #0a0612;
+  box-shadow: 0 0 18px rgba(176,38,255,.55);
+}
+.game-demo-icon--pixel svg { image-rendering: pixelated; width: 36px; height: 36px; }
+
 @media (hover: none) {
   .game-demo-link:hover { transform:none; }
 }
