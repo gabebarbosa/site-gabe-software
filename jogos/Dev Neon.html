@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dev Neon</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{--mag:#ff2bd6;--cyn:#19f0ff;--amb:#ffb02e;--vio:#8a2bff;--grn:#7dffb3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;overflow:hidden;background:#000;color:#e8e0ff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{font-family:'VT323',ui-monospace,monospace;font-size:clamp(18px,2.8vh,23px);line-height:1.2}
+canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+#bg{opacity:.6}#fx{z-index:9}
+#fl{position:fixed;inset:0;pointer-events:none;z-index:8;opacity:0}
+#fl.g{animation:fl .5s;background:radial-gradient(circle,#7dffb344,transparent 70%)}
+@keyframes fl{from{opacity:1}to{opacity:0}}
+#app{position:relative;max-width:560px;height:100%;margin:0 auto;display:flex;flex-direction:column;padding:10px 14px 12px}
+header{display:flex;justify-content:space-between;align-items:center;font:8px 'Press Start 2P',monospace;color:var(--cyn);text-shadow:0 0 8px var(--cyn);margin-bottom:8px;gap:6px}
+#cb{color:var(--amb);text-shadow:0 0 8px var(--amb)}
+#cb.bump{animation:bump .4s}
+@keyframes bump{50%{transform:scale(1.5)}}
+.bar{display:flex;gap:4px;margin-bottom:10px}
+.bar i{flex:1;height:7px;border:1px solid var(--vio);background:#0a0014}
+.bar i.on{background:var(--mag);box-shadow:0 0 10px var(--mag)}
+.bar i.cur{border-color:var(--cyn);animation:pl 1s infinite alternate}
+@keyframes pl{to{box-shadow:0 0 10px var(--cyn);background:#19f0ff55}}
+.screen{flex:1;min-height:0;display:flex;flex-direction:column;gap:1.6vh}
+.hide{display:none!important}
+.mission,.card{border:2px solid var(--cyn);box-shadow:0 0 16px #19f0ff66,inset 0 0 16px #19f0ff22;padding:10px 12px;background:#000c}
+.mission h2{font:clamp(9px,1.6vh,12px)/1.6 'Press Start 2P',monospace;margin:0 0 6px;color:var(--amb);text-shadow:0 0 8px var(--amb)}
+.mission p,.card p{margin:0}
+.tm{height:6px;background:#1a0030;flex:none}
+.tm i{display:block;height:100%;background:linear-gradient(90deg,var(--mag),var(--cyn));box-shadow:0 0 8px var(--mag);transform-origin:left}
+@keyframes tm{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+.opts{flex:1;min-height:0;display:grid;grid-template-rows:repeat(4,1fr);gap:1.3vh}
+.opt{font:clamp(12px,2vh,16px) ui-monospace,Menlo,monospace;text-align:left;color:#fff;background:#000d;border:2px solid var(--mag);box-shadow:0 0 12px #ff2bd655;padding:0 12px;cursor:pointer;word-break:break-word;transition:transform .12s;animation:in .4s backwards}
+.opt:nth-child(2){animation-delay:.07s}.opt:nth-child(3){animation-delay:.14s}.opt:nth-child(4){animation-delay:.21s}
+@keyframes in{from{opacity:0;transform:translateX(-40px) skewX(-12deg)}}
+.opt:hover:not(:disabled),.opt:focus-visible{border-color:var(--cyn);box-shadow:0 0 14px var(--cyn);transform:translateX(6px);outline:0}
+.opt.bad{border-color:#ff6b8a;color:#ff6b8a;box-shadow:none;animation:sh .35s}
+.opt.good{border-color:var(--grn);color:var(--grn);box-shadow:0 0 18px var(--grn);animation:pop .4s}
+@keyframes sh{25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+@keyframes pop{50%{transform:scale(1.06)}}
+#mo .opt:disabled{opacity:.4}
+.sb{font:8px 'Press Start 2P',monospace;color:var(--cyn);background:transparent;border:1px solid var(--cyn);padding:6px;cursor:pointer;flex:none}
+.msg{margin:0;min-height:1.2em;flex:none;color:#ff6b8a}
+.pop{position:fixed;z-index:10;font:14px 'Press Start 2P',monospace;color:var(--amb);text-shadow:0 0 10px var(--amb);pointer-events:none;animation:up 1s forwards}
+@keyframes up{to{transform:translateY(-70px);opacity:0}}
+.card{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:1.6vh;animation:in .35s}
+.card h3{font:clamp(12px,2.2vh,16px)/1.5 'Press Start 2P',monospace;margin:0;color:var(--cyn);text-shadow:0 0 10px var(--cyn)}
+.card p{font-size:clamp(20px,3.4vh,28px);line-height:1.2}
+pre{margin:0;padding:10px;background:#0a0014;border-left:3px solid var(--mag);color:var(--grn);font:clamp(12px,1.9vh,15px)/1.5 ui-monospace,Menlo,monospace;white-space:pre-wrap;word-break:break-word}
+.dots{display:flex;justify-content:center;gap:8px;flex:none}
+.dots i{width:10px;height:10px;border:2px solid var(--vio)}.dots i.on{background:var(--mag);border-color:var(--mag);box-shadow:0 0 8px var(--mag)}
+.go{font:11px 'Press Start 2P',monospace;color:#000;background:var(--amb);border:0;padding:15px;cursor:pointer;box-shadow:0 0 14px var(--amb);flex:none;animation:pl 1s infinite alternate}
+.go.alt{background:transparent;color:var(--cyn);border:2px solid var(--cyn);box-shadow:none;animation:none}
+button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.ad{flex:none;border:1px dashed var(--vio);color:#7b6aa8;text-align:center;padding:6px;font-size:16px}
+.cert{border:3px double var(--amb);box-shadow:0 0 28px #ffb02e88;background:#000e;padding:2vh 12px;text-align:center;flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:1.4vh;animation:in .5s}
+.cert h2{font:clamp(12px,3.6vw,18px)/1.6 'Press Start 2P',monospace;color:var(--amb);text-shadow:0 0 12px var(--amb);margin:0}
+.cert p{margin:0}
+.nm{font:clamp(13px,4.2vw,22px) 'Press Start 2P',monospace;color:#fff;text-shadow:2px 0 var(--mag),-2px 0 var(--cyn);word-break:break-word}
+.row{display:flex;gap:8px;flex:none}
+.row input{flex:1;min-width:0;border:2px solid var(--cyn);background:#000;color:#fff;font:20px 'VT323',monospace;padding:8px}
+.row .go{padding:12px 8px;font-size:9px}
+@media print{canvas,#fl,.noprint{display:none!important}html,body{overflow:visible;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas><canvas id="fx"></canvas><div id="fl"></div>
+<div id="app">
+<header><b id="ph"></b><span id="sc"></span><span id="cb"></span><button id="sn" class="sb">SOM ON</button></header>
+<div class="bar" id="bar"></div>
+
+<section id="hm" class="screen hide"><div class="mission"><h2>DEV NEON</h2><p>Escolha a trilha. Cada módulo termina com um certificado.</p></div><div class="opts" id="ho" style="grid-template-rows:repeat(2,1fr)"></div></section>
+
+<section id="mn" class="screen hide"><div class="mission"><h2>Escolha o módulo</h2><p>Cada módulo termina com um certificado.</p></div><div class="opts" id="mo" style="grid-template-rows:repeat(6,1fr)"></div><button class="go alt" id="hb">Trocar de trilha</button></section>
+
+<section id="q" class="screen">
+ <div class="mission"><h2 id="mt"></h2><p id="mm"></p></div>
+ <div class="tm"><i id="tb"></i></div>
+ <div class="opts" id="opts"></div>
+ <p class="msg" id="msg" aria-live="polite"></p>
+</section>
+
+<section id="e" class="screen hide">
+ <div class="card"><h3 id="et"></h3><p id="ep"></p><pre id="ex" class="hide"></pre></div>
+ <div class="dots" id="dots"></div>
+ <div class="ad hide" id="ad">Espaço de anúncio</div>
+ <button class="go" id="nx">Continuar</button>
+</section>
+
+<section id="f" class="screen hide">
+ <div class="cert">
+  <h2 id="ch"></h2>
+  <p>Este certificado reconhece que</p>
+  <div class="nm" id="cn">Seu nome</div>
+  <p>concluiu o módulo <b id="cm"></b> da trilha <b id="ct"></b> do Dev Neon com <b id="cs"></b> pontos.<br>Seu poder dev só cresce.</p>
+  <p id="ci" style="color:#9c8fc4;font-size:16px"></p>
+ </div>
+ <div class="row noprint"><input id="nm" placeholder="Seu nome" maxlength="40" aria-label="Seu nome"><button class="go alt" id="pr">Salvar PDF</button><button class="go alt" id="ag">Próximo módulo</button><button class="go alt" id="mu">Menu</button></div>
+ <div class="ad noprint">Login com Google e verificação do certificado entram na versão com Firebase.</div>
+</section>
+</div>
+
+<script>
+(function(){
+var OLD=[
+['init','Você criou a pasta meu-jogo, mas o Git ainda não observa nada nela. Qual comando começa um repositório?','git init',['git start','git new','git begin'],
+'Cria a pasta oculta .git, onde o Git guarda todo o histórico do projeto.',
+'Daqui em diante o Git acompanha os arquivos desta pasta. Você roda uma vez por projeto.',
+'$ cd meu-jogo\n$ git init\nInitialized empty Git repository',
+'É abrir um caderno novo e colar a capa: nenhuma página escrita ainda, mas tudo pronto para anotar a história.'],
+['add','Você alterou o index.html. Como colocá-lo na caixa de preparo para o próximo commit?','git add index.html',['git save index.html','git stage-commit index.html','git push index.html'],
+'Move a mudança para a área de preparo (staging), escolhendo o que entra no próximo commit.',
+'O Git não grava tudo sozinho: você escolhe o que vai. Com git add . você prepara tudo de uma vez.',
+'$ git add index.html\n$ git status\nChanges to be committed: index.html',
+'É separar na caixa de mudança só o que vai na viagem. O que ficou fora da caixa não entra no caminhão.'],
+['commit','O arquivo está preparado. Como gravar uma foto permanente do projeto, com mensagem?','git commit -m "Cria tela inicial"',['git save -m "Cria tela inicial"','git commit --push "Cria tela inicial"','git add -m "Cria tela inicial"'],
+'Cria um commit: um ponto no histórico com tudo o que estava preparado, mais autor, data e mensagem.',
+'Cada commit ganha um ID único e você pode voltar a ele quando quiser. O -m define a mensagem.',
+'$ git commit -m "Cria tela inicial"\n[main 3f2a9c1] Cria tela inicial',
+'É o save do videogame: se a próxima fase der errado, você volta exatamente para esse ponto.'],
+['branch','Você quer testar uma ideia sem mexer no código principal. Qual comando cria a branch chefe-final e já entra nela?','git checkout -b chefe-final',['git branch -d chefe-final','git merge chefe-final','git clone chefe-final'],
+'Cria uma nova linha do tempo (branch) e troca para ela.',
+'Uma branch é só um ponteiro leve para um commit. Os commits novos ficam nela e a main continua intacta.',
+'$ git checkout -b chefe-final\nSwitched to a new branch',
+'É abrir um universo paralelo: você bagunça à vontade lá e o universo original segue em paz.'],
+['merge','A ideia deu certo! Você está na main e quer trazer o trabalho da chefe-final. Qual comando?','git merge chefe-final',['git join chefe-final','git combine chefe-final','git fetch chefe-final'],
+'Une os commits de outra branch na branch em que você está.',
+'Se as duas branches mexeram no mesmo trecho, o Git pede que você resolva o conflito manualmente.',
+'$ git checkout main\n$ git merge chefe-final\nFast-forward',
+'É juntar dois rios em um: a água de cada um (o histórico) passa a correr no mesmo leito.'],
+['push','Seu código só existe no seu computador. Como enviá-lo ao GitHub (remoto origin)?','git push origin main',['git upload origin main','git pull origin main','git send main origin'],
+'Envia seus commits locais para o repositório remoto.',
+'origin é o apelido do endereço remoto e main é a branch enviada. O caminho inverso é o git pull.',
+'$ git push origin main\nTo github.com/voce/meu-jogo.git',
+'É subir o save do jogo para a nuvem: seu time (e você, em outro PC) passa a ver sua evolução.'],
+['stash','No meio de uma mudança surgiu um bug urgente em outra branch. Como guardar o trabalho pela metade, sem commitar?','git stash',['git hide','git reset --hard','git commit --draft'],
+'Guarda as mudanças não commitadas numa gaveta e deixa a pasta limpa.',
+'Ao terminar o bug, git stash pop traz tudo de volta. Já o reset --hard apagaria seu trabalho.',
+'$ git stash\nSaved working directory\n$ git stash pop',
+'É jogar o que está na mesa dentro de uma gaveta para atender uma visita. Depois você abre e continua de onde parou.'],
+['revert','Um commit quebrou o jogo e já foi enviado ao time. Qual comando o desfaz com um novo commit, sem apagar o histórico?','git revert HEAD',['git reset --hard HEAD~1','git delete HEAD','git undo'],
+'Cria um novo commit que desfaz as mudanças de um commit anterior.',
+'O histórico original fica preservado, por isso é o jeito seguro em branches compartilhadas. O reset reescreve a história.',
+'$ git revert HEAD\n[main 8b1d4e2] Revert "Quebra o jogo"',
+'É publicar uma errata no jornal: a edição errada continua nos arquivos, mas existe uma correção oficial depois dela.']
+];
+var X=[
+['status','Você esqueceu o que mudou. Qual comando mostra o que foi alterado e o que está preparado?','git status',['git look','git show-all','git check'],
+'Mostra o estado da pasta: o que mudou, o que está preparado e o que é novo.','Não altera nada, só informa. Use antes de cada commit.','$ git status\nChanges not staged: index.html','É o painel do carro: mostra tudo sem mexer em nada.'],
+['log','Você quer ver o histórico de commits. Qual comando?','git log',['git history','git past','git commits'],
+'Lista os commits do mais novo ao mais antigo.','Com --oneline, cada commit ocupa uma linha só.','$ git log --oneline\n3f2a9c1 Cria tela inicial','É o diário de bordo do projeto.'],
+['diff','Antes de commitar, você quer ver linha a linha o que mudou. Qual comando?','git diff',['git compare','git changes','git what'],
+'Mostra as diferenças entre versões, linha por linha.','Linhas com + foram adicionadas e linhas com - foram removidas.','$ git diff\n- <h1>Oi</h1>\n+ <h1>Olá</h1>','É o jogo dos sete erros entre duas versões.'],
+['clone','Você tem a URL de um projeto no GitHub e quer baixá-lo com todo o histórico. Qual comando?','git clone URL',['git download URL','git get URL','git fork URL'],
+'Copia um repositório remoto inteiro para o seu computador.','Traz arquivos, branches e histórico, e já configura o origin para você.','$ git clone https://github.com/voce/jogo.git','É baixar o jogo inteiro com todos os saves antigos.'],
+['pull','Um colega enviou novidades. Qual comando baixa e junta tudo na sua branch?','git pull',['git get','git sync','git down'],
+'Baixa os commits novos do remoto e já junta na sua branch.','É um git fetch (baixar) seguido de um git merge (juntar).','$ git pull\nUpdating 3f2a9c1..8b1d4e2','É abrir o app e ele sincronizar o save da nuvem com o seu.'],
+['commit --amend','Você acabou de commitar e errou a mensagem. Como corrigir o último commit?','git commit --amend',['git commit --fix','git revert --msg','git rename HEAD'],
+'Refaz o último commit com nova mensagem ou arquivos.','Troca o commit por um novo, com outro ID. Evite em commits já enviados.','$ git commit --amend -m "Corrige título"','É reescrever a etiqueta da caixa antes de lacrar o caminhão.'],
+['cherry-pick','Só um commit (a1b2c3d) de outra branch interessa. Como trazer apenas ele?','git cherry-pick a1b2c3d',['git merge a1b2c3d --only','git pick a1b2c3d','git grab a1b2c3d'],
+'Copia um commit específico para a branch atual.','Cria um novo commit com as mesmas mudanças, sem trazer o resto da branch.','$ git cherry-pick a1b2c3d','É pegar só a cereja do bolo, sem levar o bolo inteiro.'],
+['rebase','Sua branch ficou para trás da main. Qual comando reaplica seus commits por cima da main, deixando o histórico linear?','git rebase main',['git merge --linear main','git rewind main','git rebuild main'],
+'Move seus commits para começarem na ponta de outra branch.','Reescreve os commits com novos IDs. Não use em branches compartilhadas.','$ git checkout chefe-final\n$ git rebase main','É recortar seu capítulo e colar depois do último capítulo novo do livro.'],
+['reset --soft','Você quer desfazer o último commit, mas manter as mudanças preparadas. Qual comando?','git reset --soft HEAD~1',['git reset --hard HEAD~1','git revert --soft HEAD','git undo --keep'],
+'Volta a branch um commit, mantendo seu trabalho preparado.','--soft mantém tudo, --mixed mantém só os arquivos e --hard apaga tudo.','$ git reset --soft HEAD~1','É voltar a fita um passo, mas deixar as peças em cima da mesa.'],
+['restore','Você bagunçou o index.html e quer voltar à versão do último commit. Qual comando?','git restore index.html',['git revert index.html','git undo index.html','git reset --keep index.html'],
+'Descarta as mudanças não commitadas de um arquivo.','Cuidado: o que não foi commitado não tem volta.','$ git restore index.html','É o botão "desfazer tudo" do editor, sem Ctrl+Z.'],
+['bisect','O jogo quebrou, mas você não sabe em qual dos 200 commits. Qual comando caça o culpado por busca binária?','git bisect start',['git hunt start','git blame --find','git log --bug'],
+'Encontra o commit que introduziu um bug.','Você marca commits como good ou bad e o Git divide o intervalo ao meio até achar o culpado.','$ git bisect start\n$ git bisect bad\n$ git bisect good v1.0','É adivinhar um número de 1 a 200 ouvindo "maior" ou "menor": em uns 8 palpites você acha.'],
+['reflog','Você apagou uma branch sem querer. Qual comando mostra por onde o HEAD passou, para resgatar commits "perdidos"?','git reflog',['git log --deleted','git recover','git history --all'],
+'Mostra o diário de todos os lugares onde o HEAD esteve.','Com o ID encontrado, git checkout -b resgate ID recupera o trabalho.','$ git reflog\n8b1d4e2 HEAD@{2}: commit: Cria fase','É a câmera de segurança do Git: tem o vídeo de tudo que passou.'],
+['rebase -i','Você tem 5 commits bagunçados e quer juntá-los em um só antes do PR. Qual comando abre a edição interativa?','git rebase -i HEAD~5',['git squash HEAD~5','git merge --squash-all HEAD~5','git commit --combine 5'],
+'Abre a lista dos últimos commits para juntar, reordenar, renomear ou apagar.','Troque "pick" por "squash" ou "reword" em cada linha e salve.','$ git rebase -i HEAD~5\npick a1b2c3d ...\nsquash 3f2a9c1 ...','É editar o filme: cortar cenas, juntar takes e reordenar antes da estreia.'],
+['push --force-with-lease','Após o rebase, você precisa sobrescrever a branch remota sem apagar commits novos de colegas. Qual comando?','git push --force-with-lease',['git push --force','git push --overwrite','git push --hard'],
+'Força o envio, mas só se o remoto estiver como você viu da última vez.','Se alguém enviou algo novo, o Git recusa. O --force puro passaria por cima de tudo.','$ git push --force-with-lease origin chefe-final','É trocar a fechadura só se ninguém entrou desde que você olhou. O --force derruba a porta de qualquer jeito.'],
+['worktree','Você precisa abrir duas branches ao mesmo tempo, em pastas diferentes, sem clonar de novo. Qual comando?','git worktree add ../hotfix hotfix',['git clone --local ../hotfix','git branch --folder ../hotfix','git stash --dir ../hotfix'],
+'Cria uma segunda pasta de trabalho ligada ao mesmo repositório.','Cada pasta tem sua branch, mas todas compartilham o mesmo histórico, sem duplicar nada.','$ git worktree add ../hotfix hotfix','É ter duas mesas no mesmo escritório, usando o mesmo arquivo central.'],
+['blame','Quem escreveu esta linha esquisita, e em qual commit?','git blame index.html',['git who index.html','git author index.html','git trace index.html'],
+'Mostra, linha por linha, quem alterou por último e em qual commit.','Com o ID, git show abre o commit e explica o contexto da mudança.','$ git blame index.html\n3f2a9c1 (Ana) <h1>Olá</h1>','É a ficha de quem assinou cada linha do contrato.']
+];
+var MG=[
+{n:'BÁSICO',s:'init, add, commit, status',q:[OLD[0],OLD[1],OLD[2],X[0]]},
+{n:'INTERMEDIÁRIO',s:'log, diff, branch, merge',q:[X[1],X[2],OLD[3],OLD[4]]},
+{n:'AVANÇADO',s:'clone, push, pull, stash',q:[X[3],OLD[5],X[4],OLD[6]]},
+{n:'MESTRE',s:'amend, cherry-pick, rebase, revert',q:[X[5],X[6],X[7],OLD[7]]},
+{n:'DOUTOR',s:'reset, restore, bisect, reflog',q:[X[8],X[9],X[10],X[11]]},
+{n:'JEDI',s:'rebase -i, force-with-lease, worktree, blame',q:[X[12],X[13],X[14],X[15]]}
+];
+var Y=[
+['Where','Você tem uma lista nums e quer só os números pares. Qual expressão filtra?','nums.Where(n => n % 2 == 0)',['nums.Select(n => n % 2 == 0)','nums.Filter(n => n % 2 == 0)','nums.Find(n => n % 2 == 0)'],
+'Filtra a lista e devolve só os itens que atendem à condição.','A lambda devolve true ou false para cada item e só os true passam.','var pares = nums.Where(n => n % 2 == 0);\n// [1,2,3,4] → [2,4]','É a peneira do garimpeiro: a água passa e só as pepitas ficam.'],
+['Select','Dada a lista de produtos, você quer só os nomes. Qual expressão?','produtos.Select(p => p.Nome)',['produtos.Where(p => p.Nome)','produtos.Map(p => p.Nome)','produtos.Pick(p => p.Nome)'],
+'Transforma cada item em outra coisa (projeção).','Devolve uma sequência do mesmo tamanho, com o resultado da lambda para cada item.','var nomes = produtos.Select(p => p.Nome);\n// [Livro, Caneta]','É a máquina de suco: entra a fruta e sai o suco, uma de cada vez.'],
+['OrderBy','Você quer os produtos do mais barato ao mais caro.','produtos.OrderBy(p => p.Preco)',['produtos.Sort(p => p.Preco)','produtos.OrderDescending(p => p.Preco)','produtos.GroupBy(p => p.Preco)'],
+'Ordena de forma crescente pela chave escolhida.','OrderByDescending inverte. A lista original não muda: você recebe uma nova sequência.','var baratos = produtos.OrderBy(p => p.Preco);','É arrumar a fila por altura, do menor ao maior.'],
+['FirstOrDefault','Você quer o primeiro produto da categoria Livro, ou null se não houver nenhum.','produtos.FirstOrDefault(p => p.Cat == "Livro")',['produtos.First(p => p.Cat == "Livro")','produtos.Where(p => p.Cat == "Livro")','produtos.Last(p => p.Cat == "Livro")'],
+'Devolve o primeiro item que atende à condição, ou o valor padrão (null) se nenhum atender.','First lança exceção quando não encontra nada. FirstOrDefault não.','var livro = produtos.FirstOrDefault(p => p.Cat == "Livro");','É procurar a meia vermelha na gaveta: se não achar, você volta de mãos vazias, sem desastre.'],
+['Any','Você quer saber se existe pelo menos um produto sem estoque. Qual expressão devolve true ou false?','produtos.Any(p => p.Estoque == 0)',['produtos.Contains(p => p.Estoque == 0)','produtos.Where(p => p.Estoque == 0)','produtos.All(p => p.Estoque == 0)'],
+'Responde se pelo menos um item atende à condição.','Para na primeira correspondência, então é rápido. All exige que todos atendam.','bool falta = produtos.Any(p => p.Estoque == 0);','É perguntar "tem alguém aí?" e parar de gritar assim que alguém responde.'],
+['Sum','Você quer o valor total do carrinho somando os preços.','carrinho.Sum(p => p.Preco)',['carrinho.Count(p => p.Preco)','carrinho.Add(p => p.Preco)','carrinho.Total(p => p.Preco)'],
+'Soma um valor numérico de cada item.','Count conta, Average tira a média, Min e Max pegam os extremos.','decimal total = carrinho.Sum(p => p.Preco);','É passar as compras no caixa: cada item soma ao total.'],
+['Skip e Take','Numa paginação, pule os 10 primeiros itens e pegue os 5 seguintes.','lista.Skip(10).Take(5)',['lista.Take(10).Skip(5)','lista.Take(5).Skip(10)','lista.Page(2, 5)'],
+'Skip ignora os primeiros itens e Take pega os próximos.','A ordem importa: pula primeiro, pega depois. Inverter dá outro resultado.','var pagina3 = lista.Skip(10).Take(5);','É folhear um livro: pule 10 páginas e leia as 5 seguintes.'],
+['Distinct','A lista tem números repetidos e você quer cada valor uma única vez.','nums.Distinct()',['nums.Unique()','nums.Single()','nums.Reverse()'],
+'Remove as duplicatas e mantém cada valor uma vez.','Compara pela igualdade padrão. Para objetos, use DistinctBy(x => x.Id).','// [1,2,2,3,3] → [1,2,3]\nvar u = nums.Distinct();','É convidar cada pessoa uma única vez para a festa, mesmo que ela esteja três vezes na lista.'],
+['GroupBy','Você quer agrupar os produtos por categoria.','produtos.GroupBy(p => p.Cat)',['produtos.OrderBy(p => p.Cat)','produtos.Select(p => p.Cat)','produtos.Distinct(p => p.Cat)'],
+'Separa os itens em grupos pela chave escolhida.','Cada grupo tem uma Key (a categoria) e os itens que pertencem a ela.','foreach (var g in produtos.GroupBy(p => p.Cat))\n  Console.WriteLine($"{g.Key}: {g.Count()}");','É separar as meias em gavetas por cor.'],
+['Join','Você tem pedidos e clientes e quer casar cada pedido com seu cliente pelo Id.','pedidos.Join(clientes, p => p.ClienteId, c => c.Id, ...)',['pedidos.Concat(clientes)','pedidos.Zip(clientes)','pedidos.Merge(clientes, p => p.ClienteId)'],
+'Casa itens de duas listas que compartilham uma chave.','Você informa a chave de cada lado e o que montar com cada par. É o INNER JOIN do SQL.','var r = pedidos.Join(clientes,\n  p => p.ClienteId, c => c.Id,\n  (p, c) => new { c.Nome, p.Total });','É ligar cada convidado à sua mesa pelo número do convite.'],
+['SelectMany','Cada pedido tem uma lista de itens e você quer uma lista única com todos os itens.','pedidos.SelectMany(p => p.Itens)',['pedidos.Select(p => p.Itens)','pedidos.Concat(p => p.Itens)','pedidos.Where(p => p.Itens)'],
+'Achata listas dentro de listas em uma só.','Select devolveria uma lista de listas. SelectMany junta tudo.','// [[a,b],[c]] → [a,b,c]\nvar itens = pedidos.SelectMany(p => p.Itens);','É despejar várias caixas de peças numa mesa só.'],
+['ToDictionary','Você quer achar um produto pelo Id de forma instantânea.','produtos.ToDictionary(p => p.Id)',['produtos.ToList(p => p.Id)','produtos.GroupBy(p => p.Id)','produtos.OrderBy(p => p.Id)'],
+'Transforma a lista em dicionário usando a chave escolhida.','A chave precisa ser única, senão há exceção. Depois, dic[42] acha o item na hora.','var dic = produtos.ToDictionary(p => p.Id);\nvar p42 = dic[42];','É trocar a fila do guarda-volumes por fichas numeradas: mostrou o número, pegou a mala.'],
+['ThenBy','Ordene por categoria e, dentro de cada categoria, por preço.','produtos.OrderBy(p => p.Cat).ThenBy(p => p.Preco)',['produtos.OrderBy(p => p.Cat).OrderBy(p => p.Preco)','produtos.OrderBy(p => p.Cat, p => p.Preco)','produtos.GroupBy(p => p.Cat).OrderBy(p => p.Preco)'],
+'Adiciona um critério de desempate à ordenação.','Um segundo OrderBy refaria tudo e perderia a primeira ordem. ThenBy mantém.','produtos.OrderBy(p => p.Cat)\n        .ThenBy(p => p.Preco);','É ordenar alunos por turma e, dentro de cada turma, por ordem alfabética.'],
+['MaxBy','Você quer o produto mais caro (o objeto inteiro, não só o preço).','produtos.MaxBy(p => p.Preco)',['produtos.Max(p => p.Preco)','produtos.OrderBy(p => p.Preco)','produtos.First(p => p.Preco)'],
+'Devolve o item que tem o maior valor na chave escolhida.','Max devolve só o valor, MaxBy devolve o objeto. Existe MinBy também (.NET 6+).','var caro = produtos.MaxBy(p => p.Preco);','É perguntar quem é o jogador mais alto e receber o jogador, não a altura.'],
+['Zip','Você tem nomes e notas em listas paralelas e quer juntar cada nome com sua nota.','nomes.Zip(notas, (n, x) => $"{n}: {x}")',['nomes.Join(notas)','nomes.Concat(notas)','nomes.SelectMany(notas)'],
+'Combina duas listas posição por posição.','Para quando a lista menor termina.','// [Ana,Bia] + [8,9]\n// → ["Ana: 8","Bia: 9"]','É o zíper da jaqueta: um dente de cada lado se encaixa, um a um.'],
+['Chunk','Você quer dividir 100 itens em lotes de 20 para processar.','itens.Chunk(20)',['itens.Split(20)','itens.Take(20)','itens.GroupBy(20)'],
+'Divide a sequência em blocos de tamanho fixo (.NET 6+).','O último bloco pode ser menor se a divisão não for exata.','foreach (var lote in itens.Chunk(20))\n  Processar(lote);','É dividir um baralho em montinhos de 20 cartas.'],
+['Any vs Count','Para saber só se a lista tem algum item, qual forma é mais eficiente?','lista.Any()',['lista.Count() > 0','lista.ToList().Count > 0','lista.Sum() > 0'],
+'Verifica se existe ao menos um item, sem contar todos.','Count() pode percorrer a sequência inteira (ou consultar o banco todo). Any para no primeiro.','if (pedidos.Any()) Processar();','É espiar pela porta para ver se tem gente, em vez de contar a plateia inteira.'],
+['ToList (execução adiada)','A consulta Where só roda quando você a percorre, e roda de novo a cada vez. Como executar uma vez e guardar o resultado?','var r = consulta.ToList();',['var r = consulta.AsEnumerable();','var r = consulta.Select(x => x);','var r = consulta.Skip(0);'],
+'Executa a consulta na hora e guarda o resultado numa lista.','LINQ tem execução adiada. ToList, ToArray, Count e First forçam a execução.','var q = nums.Where(n => n > 2); // não rodou\nnums.Add(9);\nvar r = q.ToList(); // roda aqui, com o 9','É a diferença entre o pedido anotado e o prato servido: ToList é o garçom chegando à mesa.'],
+['Single','Você quer o item de Id 7 e quer erro se houver zero ou mais de um (dado inconsistente).','produtos.Single(p => p.Id == 7)',['produtos.First(p => p.Id == 7)','produtos.FirstOrDefault(p => p.Id == 7)','produtos.Last(p => p.Id == 7)'],
+'Devolve o único item que atende, e lança exceção se houver zero ou mais de um.','Serve para garantir unicidade. SingleOrDefault aceita zero, mas ainda erra com dois.','var p = produtos.Single(p => p.Id == 7);','É o segurança que só deixa entrar se o convite for único: dois iguais, ele chama a gerência.'],
+['DefaultIfEmpty','Você quer um LEFT JOIN: todos os clientes, mesmo os sem pedidos. Qual operador devolve um padrão quando o grupo vem vazio?','.DefaultIfEmpty()',['.OrDefault()','.IfEmpty()','.Coalesce()'],
+'Se a sequência vier vazia, devolve um item padrão (null) em vez de nada.','Com GroupJoin e DefaultIfEmpty, os clientes sem pedidos continuam na lista, com pedido null.','from c in clientes\njoin p in pedidos on c.Id equals p.ClienteId into g\nfrom p in g.DefaultIfEmpty()\nselect new { c.Nome, p }','É reservar uma cadeira para cada convidado, mesmo que ele traga zero acompanhantes.'],
+['AsParallel','Uma consulta pesada processa 1 milhão de itens num PC com vários núcleos. Como paralelizar?','itens.AsParallel().Where(Pesado)',['itens.Async().Where(Pesado)','itens.Parallel().Where(Pesado)','itens.ToThread().Where(Pesado)'],
+'Ativa o PLINQ, que divide o trabalho entre vários núcleos.','Só compensa em cálculos pesados. A ordem se perde, a menos que use AsOrdered().','var r = itens.AsParallel()\n             .Where(x => EhPrimo(x))\n             .ToList();','É chamar vários cozinheiros para a mesma encomenda, em vez de um só.'],
+['let','Na sintaxe de consulta, você quer calcular o total uma vez e reutilizá-lo no filtro e no select. Qual palavra-chave guarda esse valor?','let',['var','set','into'],
+'Cria uma variável temporária dentro da consulta.','Calcula uma vez por item e permite reusar nas cláusulas seguintes.','from p in pedidos\nlet total = p.Qtd * p.Preco\nwhere total > 100\nselect new { p.Id, total }','É anotar o resultado da conta no canto da folha para não refazer.'],
+['Aggregate','Você quer unir uma lista de palavras numa frase única, acumulando o resultado passo a passo.','palavras.Aggregate((a, b) => a + " " + b)',['palavras.Sum((a, b) => a + " " + b)','palavras.Reduce((a, b) => a + " " + b)','palavras.Join((a, b) => a + " " + b)'],
+'Combina todos os itens num único resultado, acumulando um passo de cada vez.','A lambda recebe o acumulado e o próximo item. Sum, Min e Max são casos particulares.','// ["a","b","c"] → "a b c"','É a bola de neve descendo a ladeira: a cada metro, ela junta mais neve.'],
+['yield return','Você quer criar o seu próprio operador LINQ, preguiçoso, que devolve itens um a um. Qual palavra-chave usa dentro do método?','yield return',['return each','await foreach','emit item'],
+'Cria um iterador: devolve um item de cada vez, pausando o método entre eles.','É assim que o Where funciona por dentro: o código só roda quando alguém pede o próximo item.','static IEnumerable<T> Cada2<T>(\n  this IEnumerable<T> s) {\n  int i = 0;\n  foreach (var x in s)\n    if (i++ % 2 == 0) yield return x;\n}','É a máquina de chiclete: ela só solta o próximo quando você gira a manivela.']
+];
+var ML=[
+{n:'BÁSICO',s:'Where, Select, OrderBy, FirstOrDefault',q:[Y[0],Y[1],Y[2],Y[3]]},
+{n:'INTERMEDIÁRIO',s:'Any, Sum, Skip/Take, Distinct',q:[Y[4],Y[5],Y[6],Y[7]]},
+{n:'AVANÇADO',s:'GroupBy, Join, SelectMany, ToDictionary',q:[Y[8],Y[9],Y[10],Y[11]]},
+{n:'MESTRE',s:'ThenBy, MaxBy, Zip, Chunk',q:[Y[12],Y[13],Y[14],Y[15]]},
+{n:'DOUTOR',s:'Any vs Count, ToList, Single, DefaultIfEmpty',q:[Y[16],Y[17],Y[18],Y[19]]},
+{n:'JEDI',s:'AsParallel, let, Aggregate, yield return',q:[Y[20],Y[21],Y[22],Y[23]]}
+];
+var TR=[{n:'GIT',p:'git ',d:'Versionamento, do básico ao Jedi',m:MG},{n:'LINQ',p:'LINQ ',d:'Consultas em C#, do básico ao Jedi',m:ML}];
+var M=MG;
+var $=function(i){return document.getElementById(i)},RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var n=0,S=0,K=0,st=0,t0=0,tw=0,ty=0,full='',P=[],T=0,m=0,S0=0,u=0,tk=0,U=[0,0],D=OLD;
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function sv(){try{localStorage.setItem('devneon',(U[tk]=u,JSON.stringify({U:U,S:S})))}catch(e){}}
+function show(id){['hm','mn','q','e','f'].forEach(function(x){$(x).classList.toggle('hide',x!=id)})}
+function hud(all){
+ $('ph').textContent=M[m].n+' '+(n+1)+'/'+D.length;$('sc').textContent=S+' PTS';
+ $('cb').textContent=K>1?'x'+K+' COMBO':'';
+ var b=$('bar');b.innerHTML='';D.forEach(function(_,i){b.appendChild(el('i',i<n||all?'on':i==n?'cur':''))})}
+function load(i){
+ n=i;var d=D[n];show('q');$('mt').textContent='> '+TR[tk].p+d[0];$('mm').textContent=d[1];$('msg').textContent='';
+ var o=$('opts');o.innerHTML='';
+ [d[2]].concat(d[3]).map(function(x){return[Math.random(),x]}).sort(function(a,b){return a[0]-b[0]}).forEach(function(p){
+  var b=el('button','opt',p[1]);b.onclick=function(){pick(b,p[1])};o.appendChild(b)});
+ var tb=$('tb');tb.style.animation='none';void tb.offsetWidth;tb.style.animation='tm 20s linear forwards';t0=Date.now();
+ hud();sv();
+}
+function pop(b,t){var r=b.getBoundingClientRect(),e=el('div','pop',t);e.style.left=(r.left+r.width/2-30)+'px';e.style.top=r.top+'px';document.body.appendChild(e);setTimeout(function(){e.remove()},1000)}
+function burst(b){if(RM)return;var r=b.getBoundingClientRect(),C=['#ff2bd6','#19f0ff','#ffb02e','#7dffb3'];
+ for(var i=0;i<46;i++)P.push({x:r.left+r.width/2,y:r.top+r.height/2,vx:(Math.random()-.5)*12,vy:(Math.random()-.8)*10,l:55,c:C[i%4]})}
+function pick(b,v){
+ var d=D[n],m=$('msg');
+ if(v!=d[2]){sfx('bad');K=0;b.className='opt bad';b.disabled=true;m.textContent='Esse não! Combo zerado. Tente outra.';hud();return}
+ var bonus=Math.max(0,Math.round(50*(1-(Date.now()-t0)/20000))),g=100+bonus+K*20;K++;S+=g;
+ $('tb').style.animationPlayState='paused';sfx('good');
+ [].forEach.call($('opts').children,function(x){x.disabled=true});
+ b.className='opt good';pop(b,'+'+g);burst(b);$('fl').className='';void $('fl').offsetWidth;$('fl').className='g';
+ hud();$('cb').classList.remove('bump');void $('cb').offsetWidth;$('cb').classList.add('bump');
+ setTimeout(function(){show('e');step(0)},RM?0:850);
+}
+function step(i){
+ st=i;sfx('blip');var d=D[n],t=['O que faz','Como funciona','Exemplo','Analogia'];
+ $('et').textContent=t[i];var ex=i==2;$('ex').classList.toggle('hide',!ex);$('ep').classList.toggle('hide',ex);
+ clearInterval(tw);ty=0;
+ if(ex)$('ex').textContent=d[6];
+ else{full=d[4+i-(i==3?0:0)];full=[d[4],d[5],'',d[7]][i];var p=$('ep'),k=0;p.textContent='';
+  if(RM){p.textContent=full}else{ty=1;tw=setInterval(function(){p.textContent=full.slice(0,++k);if(k>=full.length){clearInterval(tw);ty=0}},16)}}
+ var dots=$('dots');dots.innerHTML='';for(var j=0;j<4;j++)dots.appendChild(el('i',j<=i?'on':''));
+ var last=n==D.length-1;$('ad').classList.toggle('hide',!(i==3&&!last));
+ $('nx').textContent=i<3?'Continuar':last?'Pegar meu certificado':'Próxima fase';
+}
+$('nx').onclick=function(){
+ if(ty){clearInterval(tw);ty=0;$('ep').textContent=full;return}
+ if(st<3)return step(st+1);
+ if(n<D.length-1)return load(n+1);
+ hud(true);show('f');sfx('win');u=Math.max(u,m+1);sv();$('ch').textContent='Certificado '+TR[tk].n+': '+M[m].n;$('ct').textContent=TR[tk].n;$('cm').textContent=M[m].n;$('cs').textContent=S-S0;$('ag').textContent=m<M.length-1?'Próximo módulo':'Menu';
+ $('ci').textContent='ID GIT-'+Math.random().toString(36).slice(2,10).toUpperCase()+' | '+new Date().toLocaleDateString('pt-BR');
+};
+$('nm').addEventListener('input',function(){$('cn').textContent=this.value.trim()||'Seu nome'});
+$('pr').onclick=function(){window.print()};
+function start(i){sfx('start');m=i;D=M[m].q;S0=S;K=0;load(0)}
+function menu(){show('mn');$('ph').textContent='DEV · '+TR[tk].n;$('sc').textContent=S+' PTS';$('cb').textContent='';
+ var b=$('bar');b.innerHTML='';M.forEach(function(_,i){b.appendChild(el('i',i<u?'on':i==u?'cur':''))});
+ var o=$('mo');o.innerHTML='';M.forEach(function(x,i){var t=el('button','opt',(i+1)+'. '+x.n+(i<u?' [certificado]':i>u?' [bloqueado]':'')+'\n'+x.s);t.disabled=i>u;t.style.whiteSpace='pre-line';t.onclick=function(){start(i)};o.appendChild(t)})}
+$('ag').onclick=function(){if(m<M.length-1)start(m+1);else menu()};$('mu').onclick=menu;$('hb').onclick=function(){sfx('blip');home()};
+function home(){U[tk]=u;show('hm');$('ph').textContent='DEV NEON';$('sc').textContent=S+' PTS';$('cb').textContent='';$('bar').innerHTML='';
+ var o=$('ho');o.innerHTML='';TR.forEach(function(x,i){var z=el('button','opt',x.n+'  ('+U[i]+'/'+x.m.length+' certificados)\n'+x.d);z.style.whiteSpace='pre-line';z.onclick=function(){sfx('start');tk=i;u=U[i];M=x.m;menu()};o.appendChild(z)})}
+
+/* som: chiptune gerado em tempo real (Web Audio), sem arquivos externos */
+var AC,mus,sf,NB,nt=0,bp=0,SN=1;
+try{SN=localStorage.getItem('gitsnd')=='0'?0:1}catch(e){}
+var BS=[110,87.31,130.81,98],CH=[[440,523.25,659.25],[349.23,440,523.25],[523.25,659.25,783.99],[392,493.88,587.33]],AR=[0,1,2,1,0,1,2,2];
+function tone(f,t,d,ty,v,dst,sl){var o=AC.createOscillator(),g=AC.createGain();o.type=ty;o.frequency.setValueAtTime(f,t);if(sl)o.frequency.exponentialRampToValueAtTime(sl,t+d);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(dst);o.start(t);o.stop(t+d+.02)}
+function hat(t){var s=AC.createBufferSource(),g=AC.createGain();s.buffer=NB;g.gain.setValueAtTime(.07,t);g.gain.exponentialRampToValueAtTime(.001,t+.05);s.connect(g);g.connect(mus);s.start(t)}
+function au(){
+ if(!AC){var C=window.AudioContext||window.webkitAudioContext;if(!C)return;AC=new C();var mg=AC.createGain();mg.gain.value=.6;mg.connect(AC.destination);
+  mus=AC.createGain();mus.gain.value=.2;mus.connect(mg);sf=AC.createGain();sf.gain.value=.6;sf.connect(mg);
+  NB=AC.createBuffer(1,AC.sampleRate*.1,AC.sampleRate);var d=NB.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;
+  nt=AC.currentTime+.1;setInterval(sch,50)}
+ if(AC.state=='suspended'&&SN)AC.resume()}
+function sch(){
+ if(!AC||!SN){if(AC)nt=AC.currentTime+.1;return}
+ while(nt<AC.currentTime+.25){var i=bp,c=Math.floor(i/8)%4,t=nt;
+  if(i%2==0)tone(BS[c],t,.2,'triangle',.5,mus);
+  tone(CH[c][AR[i%8]],t,.16,'square',i>=24&&i%8>5?.16:.1,mus);
+  if(i%4==0)tone(150,t,.12,'sine',.7,mus,45);else if(i%2==1)hat(t);
+  nt+=.2;bp=(bp+1)%32}}
+function sfx(k){
+ if(!SN)return;au();if(!AC)return;var t=AC.currentTime;
+ if(k=='blip')tone(660,t,.07,'square',.25,sf);
+ else if(k=='start'){tone(330,t,.1,'square',.25,sf);tone(660,t+.1,.15,'square',.25,sf)}
+ else if(k=='bad')tone(220,t,.3,'sawtooth',.3,sf,70);
+ else if(k=='good')[523,659,784,1047].forEach(function(f,i){tone(f,t+i*.07,.14,'square',.25,sf)});
+ else if(k=='win')[523,659,784,1047,784,1047,1319].forEach(function(f,i){tone(f,t+i*.1,.22,'square',.25,sf)})}
+function snd(){$('sn').textContent=SN?'SOM ON':'SOM OFF'}
+$('sn').onclick=function(e){e.stopPropagation();SN=SN?0:1;try{localStorage.setItem('gitsnd',SN)}catch(x){}snd();if(SN){au();if(AC)AC.resume();sfx('blip')}else if(AC)AC.suspend()};
+document.addEventListener('pointerdown',au);
+document.addEventListener('visibilitychange',function(){if(AC){if(document.hidden)AC.suspend();else if(SN)AC.resume()}});
+snd();
+
+/* fundo e partículas */
+var bg=$('bg'),c=bg.getContext('2d'),fx=$('fx'),f=fx.getContext('2d'),W,H,stars=[];
+for(var i=0;i<50;i++)stars.push([Math.random(),Math.random()*.55,Math.random()*6]);
+function rs(){W=bg.width=fx.width=innerWidth;H=bg.height=fx.height=innerHeight}
+rs();addEventListener('resize',rs);
+function draw(){
+ T+=RM?0:1;c.fillStyle='#000';c.fillRect(0,0,W,H);var hz=H*.6,r=Math.min(W*.32,H*.2);
+ stars.forEach(function(s){c.fillStyle='rgba(255,255,255,'+(.4+.6*Math.abs(Math.sin(T/40+s[2])))+')';c.fillRect(s[0]*W,s[1]*H,2,2)});
+ var g=c.createLinearGradient(0,hz-r,0,hz);g.addColorStop(0,'#ffb02e');g.addColorStop(1,'#ff2bd6');
+ c.fillStyle=g;c.beginPath();c.arc(W/2,hz,r,Math.PI,0);c.fill();
+ c.fillStyle='#000';for(var i=1;i<6;i++)c.fillRect(W/2-r,hz-i*r/6,2*r,i*1.6);
+ c.strokeStyle='hsl('+(300+Math.sin(T/150)*50)+',100%,60%)';c.lineWidth=1.2;c.beginPath();
+ for(var k=0;k<12;k++){var z=((k+(T*.03)%1)/12),y=hz+(H-hz)*z*z;c.moveTo(0,y);c.lineTo(W,y)}
+ for(var x=-12;x<=12;x++){c.moveTo(W/2,hz);c.lineTo(W/2+x*W*.16,H)}
+ c.stroke();
+ f.clearRect(0,0,W,H);
+ P=P.filter(function(p){p.x+=p.vx;p.y+=p.vy;p.vy+=.28;p.l--;f.globalAlpha=Math.max(0,p.l/55);f.fillStyle=p.c;f.fillRect(p.x,p.y,6,6);return p.l>0});
+ f.globalAlpha=1;
+ if(!RM)requestAnimationFrame(draw)
+}
+draw();if(RM)setInterval(draw,500);
+
+try{var j=JSON.parse(localStorage.getItem('devneon'));if(j){U=j.U||[0,0];S=j.S||0}else{j=JSON.parse(localStorage.getItem('gitneon4'));if(j){U[0]=j.u||0;S=j.S||0}}}catch(e){}
+u=U[0];home();
+})();
+</script>
+</body>
+</html>
