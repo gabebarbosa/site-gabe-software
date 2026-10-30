@@ -1,0 +1,8 @@
+# Configurações locais de ferramentas (não vão para o site)
+.claude/
+.vscode/
+
+# Arquivos do sistema
+Thumbs.db
+desktop.ini
+.DS_Store
