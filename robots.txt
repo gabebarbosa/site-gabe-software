@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /index-backup.html
+Disallow: /index%20old.html
+
+Sitemap: https://gabesoftware.com.br/sitemap.xml

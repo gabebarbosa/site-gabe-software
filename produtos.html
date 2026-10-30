@@ -1,125 +1,180 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Produtos & Soluções — GABE Software</title>
   <meta name="description" content="Produtos e soluções próprias da GABE Software em desenvolvimento. Tecnologia aplicada a necessidades reais.">
+  <meta name="theme-color" content="#12051f">
   <link rel="canonical" href="https://gabesoftware.com.br/produtos.html">
+  <link rel="icon" href="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s64-c-no">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gabesoftware.com.br/produtos.html">
+  <meta property="og:site_name" content="GABE Software">
   <meta property="og:title" content="Produtos & Soluções — GABE Software">
   <meta property="og:description" content="Estamos desenvolvendo soluções próprias para transformar necessidades reais em produtos de tecnologia.">
+  <meta property="og:image" content="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s512-c-no">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Produtos & Soluções — GABE Software">
   <meta name="twitter:description" content="Estamos desenvolvendo soluções próprias para transformar necessidades reais em produtos de tecnologia.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#conteudo" id="skip-link">Ir para o conteúdo</a>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></symbol>
+  </svg>
 
-  <header>
-    <div class="shine" aria-hidden="true"></div>
-    <a href="index.html" class="logo-link">
-      <img src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s324-c-no" alt="Logo GABE Software">
-      <h1>GABE SOFTWARE</h1>
-    </a>
-    <p class="sub" id="hero-sub">Tecnologia, consultoria e capacitação</p>
-    <div class="language-buttons">
-      <button onclick="setLanguage('pt')" aria-label="Português">🇧🇷</button>
-      <button onclick="setLanguage('en')" aria-label="English">🇺🇸</button>
+  <a class="skip-link" href="#conteudo" data-i18n="skipLink">Ir para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="index.html" class="brand" aria-label="GABE Software — início">
+        <img referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s96-c-no" alt="" width="40" height="40">
+        <span class="brand-name">GABE SOFTWARE<span data-i18n="brandTag">TECNOLOGIA</span></span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html#servicos" class="active" data-i18n="navServices">Serviços</a></li>
+          <li><a href="index.html#processo" data-i18n="navProcess">Como trabalhamos</a></li>
+          <li><a href="index.html#sobre" data-i18n="navSobre">Sobre</a></li>
+          <li><a href="index.html#jogos" data-i18n="navJogos">Jogos</a></li>
+          <li><a href="index.html#faq" data-i18n="navFaq">Dúvidas</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switch" role="group" aria-label="Idioma / Language">
+          <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <a href="index.html#contato" class="btn btn-primary btn-sm header-cta" data-i18n="headerCta">Fale conosco</a>
+        <button class="nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menu" data-i18n-attr="aria-label:navToggle">
+          <svg class="icon i-menu"><use href="#i-menu"/></svg>
+          <svg class="icon i-close"><use href="#i-x"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
-  <nav class="site-nav" aria-label="Navegação principal">
-    <div class="nav-inner">
-      <ul>
-        <li><a href="index.html" id="nav-home">Início</a></li>
-        <li><a href="desenvolvimento-de-software.html" id="nav-dev">Desenvolvimento</a></li>
-        <li><a href="consultoria-em-tecnologia.html" id="nav-cons">Consultoria</a></li>
-        <li><a href="ia-e-automacao.html" id="nav-ia">IA & Automação</a></li>
-        <li><a href="ensino-e-capacitacao.html" id="nav-ensino">Ensino</a></li>
-        <li><a href="produtos.html" class="active" id="nav-prod">Produtos</a></li>
-        <li><a href="index.html#sobre" id="nav-sobre">Sobre</a></li>
-        <li><a href="index.html#contato" id="nav-contato">Contato</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <main class="hero" id="conteudo">
-    <nav class="breadcrumb reveal" aria-label="Breadcrumb">
-      <a href="index.html" id="breadcrumb-home">Início</a> › <span id="breadcrumb-current">Produtos & Soluções</span>
-    </nav>
-
-    <h2 class="page-title reveal" id="page-title">Produtos & Soluções</h2>
-    <p class="lead reveal" id="page-intro">Soluções próprias em desenvolvimento, construídas a partir de necessidades reais identificadas na prática.</p>
-
-    <section class="section reveal">
-      <div class="products-placeholder">
-        <p id="prod-desc">Estamos desenvolvendo soluções próprias para transformar necessidades reais em produtos de tecnologia.</p>
+  <main id="conteudo">
+    <section class="hero-dark page-hero">
+      <div class="wrap">
+        <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+          <a href="index.html" data-i18n="breadcrumbHome">Início</a><span>›</span><span data-i18n="crumb">Produtos & Soluções</span>
+        </nav>
+        <span class="kicker reveal" style="color:var(--lilac)" data-i18n="kicker">Produtos & Soluções</span>
+        <h1 class="reveal reveal-d1" data-i18n="title">Necessidades reais viram <span class="grad-text">produtos de tecnologia.</span></h1>
+        <p class="hero-lead reveal reveal-d2" data-i18n="lead">Estamos desenvolvendo soluções próprias, construídas a partir de problemas que encontramos na prática ao longo de anos de projetos.</p>
       </div>
     </section>
 
-    <section class="section reveal">
-      <div class="card">
-        <h3 id="block1-title">Em breve</h3>
-        <p id="block1-desc" class="muted">Esta área será atualizada conforme os produtos forem lançados. Se quiser ser avisado ou conversar sobre uma necessidade específica, entre em contato.</p>
+    <section class="section">
+      <div class="wrap">
+        <div class="coming reveal">
+          <div class="ic-box"><svg class="icon"><use href="#i-box"/></svg></div>
+          <h3 data-i18n="b1T">Em breve</h3>
+          <p data-i18n="b1D">Esta área será atualizada conforme os produtos forem lançados. Quer ser avisado em primeira mão ou tem uma necessidade específica que um produto poderia resolver? Fale com a gente.</p>
+          <div class="hero-ctas" style="justify-content:center;margin-top:0">
+            <a href="https://wa.me/5521973036099" class="btn btn-primary btn-arrow" data-wa target="_blank" rel="noopener"><span data-i18n="cta1">Quero ser avisado</span><svg class="icon"><use href="#i-arrow"/></svg></a>
+            <a href="index.html#servicos" class="btn btn-outline" data-i18n="cta2">Ver nossos serviços</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section reveal">
-      <div class="cta-box">
-        <h2 id="contact-title">Vamos conversar?</h2>
-        <p id="contact-desc">Conte qual desafio tecnológico você precisa resolver.</p>
-        <a class="email-link" href="mailto:contato.gabesoftware@gmail.com" id="contact-btn">Entrar em contato</a>
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="hero-dark cta-band reveal">
+          <div style="position:relative">
+            <h2 data-i18n="ctaBandTitle">Pronto para dar o próximo passo?</h2>
+            <p data-i18n="bandDesc">Tem interesse nos nossos produtos ou precisa de uma solução sob medida agora? Vamos conversar.</p>
+          </div>
+          <div class="hero-ctas" style="position:relative">
+            <a href="https://wa.me/5521973036099" class="btn btn-wa btn-lg" data-wa target="_blank" rel="noopener"><svg class="icon"><use href="#i-chat"/></svg><span data-i18n="ctaBandWa">Falar no WhatsApp</span></a>
+            <a href="mailto:contato.gabesoftware@gmail.com" class="btn btn-ghost btn-lg"><svg class="icon"><use href="#i-mail"/></svg><span data-i18n="ctaBandMail">Enviar e-mail</span></a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    GABE Software LTDA · CNPJ 61.424.494/0001-26 © <span id="year"></span><br>
-    <img class="footer-logo" src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s324-c-no" alt="Logo GABE Software">
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="index.html" class="brand">
+            <img referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/a/ACg8ocIJ2pSbI6fZlYWzQ0Q6W_1BLcl6Nfvpz5AfNLEiyL9qdzgXlg0=s96-c-no" alt="" width="40" height="40" loading="lazy">
+            <span class="brand-name">GABE SOFTWARE</span>
+          </a>
+          <p data-i18n="footerAbout">Software sob medida, consultoria, IA & automação e capacitação — tecnologia sênior para empresas que querem crescer sem travar.</p>
+          <div class="socials">
+            <a href="https://www.linkedin.com/in/gabriel-de-lemos-barbosa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="icon"><use href="#i-linkedin"/></svg></a>
+            <a href="https://wa.me/5521973036099" data-wa target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="icon"><use href="#i-chat"/></svg></a>
+            <a href="https://twitter.com/gabesoftware" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"><svg class="icon"><use href="#i-x"/></svg></a>
+            <a href="mailto:contato.gabesoftware@gmail.com" aria-label="E-mail"><svg class="icon"><use href="#i-mail"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 data-i18n="footerServices">Serviços</h4>
+          <ul>
+            <li><a href="desenvolvimento-de-software.html" data-i18n="navDev">Desenvolvimento</a></li>
+            <li><a href="ia-e-automacao.html" data-i18n="navIa">IA & Automação</a></li>
+            <li><a href="consultoria-em-tecnologia.html" data-i18n="navCons">Consultoria</a></li>
+            <li><a href="ensino-e-capacitacao.html" data-i18n="navEnsino">Ensino</a></li>
+            <li><a href="produtos.html" data-i18n="navProd">Produtos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footerCompany">Empresa</h4>
+          <ul>
+            <li><a href="index.html#sobre" data-i18n="navSobre">Sobre</a></li>
+            <li><a href="index.html#processo" data-i18n="navProcess">Como trabalhamos</a></li>
+            <li><a href="index.html#jogos" data-i18n="navJogos">Jogos</a></li>
+            <li><a href="index.html#faq" data-i18n="navFaq">Dúvidas</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footerContact">Contato</h4>
+          <ul>
+            <li><a href="mailto:contato.gabesoftware@gmail.com">contato.gabesoftware@gmail.com</a></li>
+            <li><a href="https://wa.me/5521973036099" data-wa target="_blank" rel="noopener">+55 (21) 97303-6099</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year></span> GABE Software LTDA · CNPJ 61.424.494/0001-26 · <span data-i18n="footerRights">Todos os direitos reservados.</span></span>
+        <span data-i18n="footerMade">Feito com cuidado no Rio de Janeiro, Brasil.</span>
+      </div>
+    </div>
   </footer>
 
-  <script src="js/common.js"></script>
+  <a class="wa-float" href="https://wa.me/5521973036099" data-wa target="_blank" rel="noopener" aria-label="Conversar no WhatsApp" data-i18n-attr="aria-label:waFloatAria">
+    <svg class="icon"><use href="#i-chat"/></svg><span data-i18n="waFloat">WhatsApp</span>
+  </a>
+
   <script>
     const pageTranslations = {
-      pt: {
-        metaTitle: 'Produtos & Soluções — GABE Software',
-        metaDesc: 'Produtos e soluções próprias da GABE Software em desenvolvimento. Tecnologia aplicada a necessidades reais.',
-        ogTitle: 'Produtos & Soluções — GABE Software',
-        ogDesc: 'Estamos desenvolvendo soluções próprias para transformar necessidades reais em produtos de tecnologia.',
-        breadcrumbCurrent: 'Produtos & Soluções',
-        pageTitle: 'Produtos & Soluções',
-        pageIntro: 'Soluções próprias em desenvolvimento, construídas a partir de necessidades reais identificadas na prática.',
-        prodDesc: 'Estamos desenvolvendo soluções próprias para transformar necessidades reais em produtos de tecnologia.',
-        block1Title: 'Em breve',
-        block1Desc: 'Esta área será atualizada conforme os produtos forem lançados. Se quiser ser avisado ou conversar sobre uma necessidade específica, entre em contato.',
-        contactDesc: 'Tem interesse nos nossos produtos ou quer saber mais? Entre em contato.'
-      },
       en: {
         metaTitle: 'Products & Solutions — GABE Software',
         metaDesc: 'GABE Software in-house products and solutions in development. Technology applied to real needs.',
-        ogTitle: 'Products & Solutions — GABE Software',
-        ogDesc: 'We are developing in-house solutions to turn real needs into technology products.',
-        breadcrumbCurrent: 'Products & Solutions',
-        pageTitle: 'Products & Solutions',
-        pageIntro: 'In-house solutions in development, built from real needs identified in practice.',
-        prodDesc: 'We are developing in-house solutions to turn real needs into technology products.',
-        block1Title: 'Coming soon',
-        block1Desc: 'This section will be updated as products are launched. If you want to be notified or discuss a specific need, get in touch.',
-        contactDesc: 'Interested in our products or want to learn more? Get in touch.'
+        crumb: 'Products & Solutions', kicker: 'Products & Solutions',
+        title: 'Real needs become <span class="grad-text">technology products.</span>',
+        lead: 'We are building our own solutions, born from problems we have encountered in practice over years of projects.',
+        b1T: 'Coming soon',
+        b1D: 'This section will be updated as products launch. Want to be the first to know, or have a specific need a product could solve? Get in touch.',
+        cta1: 'Notify me', cta2: 'See our services',
+        bandDesc: 'Interested in our products or need a custom solution right now? Let’s talk.'
       }
     };
-
-    const pageTextIds = [
-      ['breadcrumb-current','breadcrumbCurrent'], ['page-title','pageTitle'], ['page-intro','pageIntro'],
-      ['prod-desc','prodDesc'], ['block1-title','block1Title'], ['block1-desc','block1Desc'],
-      ['contact-desc','contactDesc']
-    ];
-
-    function setLanguage(lang) { applySiteLanguage(lang, pageTranslations, pageTextIds); }
   </script>
+  <script src="js/common.js"></script>
 </body>
 </html>
