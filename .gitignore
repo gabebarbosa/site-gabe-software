@@ -2,6 +2,9 @@
 .claude/
 .vscode/
 
+# Documentos internos (ex.: tabela de preços) — ficam só no computador
+_interno/
+
 # Arquivos do sistema
 Thumbs.db
 desktop.ini
