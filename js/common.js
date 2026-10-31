@@ -15,6 +15,7 @@ const commonTranslations = {
     navIa: 'AI & Automation',
     navEnsino: 'Training',
     navProd: 'Products',
+    navCursos: 'Courses',
     navProcess: 'How we work',
     navSobre: 'About',
     navJogos: 'Games',
@@ -96,7 +97,10 @@ function applySiteLanguage(lang) {
   });
 
   const waText = isPt ? 'Olá! Vim pelo site da GABE Software e gostaria de conversar sobre um projeto.' : dict.waMsg;
-  document.querySelectorAll('[data-wa]').forEach((a) => { a.href = waLink(waText); });
+  // data-wa-pt / data-wa-en permitem uma mensagem própria por botão (ex.: curso específico).
+  document.querySelectorAll('[data-wa]').forEach((a) => {
+    a.href = waLink((isPt ? a.dataset.waPt : a.dataset.waEn) || waText);
+  });
 
   document.documentElement.lang = isPt ? 'pt-BR' : 'en';
   document.querySelectorAll('.lang-switch button').forEach((b) => {

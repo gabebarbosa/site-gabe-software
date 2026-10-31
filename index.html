@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=2">
+  <link rel="stylesheet" href="css/styles.css?v=3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -71,6 +71,7 @@
       <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
         <ul>
           <li><a href="#servicos" data-i18n="navServices">Serviços</a></li>
+          <li><a href="cursos.html" data-i18n="navCursos">Cursos</a></li>
           <li><a href="#processo" data-i18n="navProcess">Como trabalhamos</a></li>
           <li><a href="#sobre" data-i18n="navSobre">Sobre</a></li>
           <li><a href="#jogos" data-i18n="navJogos">Jogos</a></li>
@@ -240,6 +241,16 @@
             </ul>
             <a class="more" href="ensino-e-capacitacao.html"><span data-i18n="more">Conhecer em detalhes</span><svg class="icon"><use href="#i-arrow"/></svg></a>
           </article>
+        </div>
+        <div class="hero-dark cta-band reveal" style="margin-top:clamp(28px,4vw,48px)">
+          <div style="position:relative">
+            <span class="kicker" style="color:#ff9cec" data-i18n="cursosKicker">Novo · Cursos para jovens</span>
+            <h2 data-i18n="cursosTitle">Informática e programação na prática, simulando o trabalho real.</h2>
+            <p data-i18n="cursosDesc">Presencial em Teresópolis ou online ao vivo, com turmas pequenas e aula experimental gratuita.</p>
+          </div>
+          <div class="hero-ctas" style="position:relative">
+            <a href="cursos.html" class="btn btn-primary btn-lg btn-arrow"><span data-i18n="cursosBtn">Conhecer os cursos</span><svg class="icon"><use href="#i-arrow"/></svg></a>
+          </div>
         </div>
         <p class="reveal" style="text-align:center;margin-top:2rem;color:var(--muted)">
           <span data-i18n="prodTeaser">Também estamos construindo produtos próprios.</span>
@@ -475,6 +486,7 @@
             <li><a href="ia-e-automacao.html" data-i18n="navIa">IA & Automação</a></li>
             <li><a href="consultoria-em-tecnologia.html" data-i18n="navCons">Consultoria</a></li>
             <li><a href="ensino-e-capacitacao.html" data-i18n="navEnsino">Ensino</a></li>
+            <li><a href="cursos.html" data-i18n="navCursos">Cursos</a></li>
             <li><a href="produtos.html" data-i18n="navProd">Produtos</a></li>
           </ul>
         </div>
@@ -535,6 +547,8 @@
         s3f1: 'Legacy diagnosis and modernization plan', s3f2: 'Audit of AI-built systems', s3f3: 'Observability: metrics, logs, traces and alerts',
         s4Title: 'Education & Training', s4Desc: 'Hands-on training for people, teams and institutions that want to truly level up.',
         s4f1: 'Private lessons and programming mentoring', s4f2: 'Corporate training and workshops', s4f3: 'Programs for educational institutions',
+        cursosKicker: 'New · Courses for young people', cursosTitle: 'Computer skills and programming, hands-on, simulating real work.',
+        cursosDesc: 'In person in Teresópolis or live online, with small classes and a free trial class.', cursosBtn: 'See the courses',
         prodTeaser: 'We are also building our own products.', prodTeaserLink: 'See Products & Solutions →',
         stat1: 'years on large-scale projects', stat2: 'integrated service areas', stat3: 'custom-built solutions', stat4: 'service in Brazil and abroad',
         whyKicker: 'Why GABE', whyTitle: 'Big-project experience, <em>boutique attention.</em>',
@@ -576,6 +590,6 @@
       }
     };
   </script>
-  <script src="js/common.js?v=2"></script>
+  <script src="js/common.js?v=3"></script>
 </body>
 </html>
