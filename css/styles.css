@@ -298,6 +298,15 @@ button { font: inherit; cursor: pointer; }
 .tags { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.3rem 0 1.8rem; }
 .tags span { font-size: .85rem; font-weight: 700; color: var(--purple); background: #fff; border: 1px solid var(--lilac-border); padding: .38rem .8rem; border-radius: 999px; }
 .about-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.name-note { margin-top: 1.6rem; font-size: .9rem; color: var(--muted); }
+.name-note summary { display: inline-flex; align-items: center; gap: .4rem; cursor: pointer; list-style: none; font-weight: 600; color: var(--muted); border-bottom: 1px dashed var(--lilac); padding-bottom: 1px; }
+.name-note summary::-webkit-details-marker { display: none; }
+.name-note summary:hover { color: var(--purple); }
+.name-note p { margin: .8rem 0 .6rem; }
+.name-note ul { list-style: none; display: grid; gap: .4rem; }
+.name-note li { display: flex; gap: .6rem; align-items: baseline; }
+.name-note li b { flex: none; width: 1.4rem; height: 1.4rem; border-radius: 6px; display: grid; place-items: center; font-size: .78rem; color: #fff; background: var(--grad); }
+.name-note strong { color: var(--ink-2); }
 
 /* ---------- Games (dark) ---------- */
 .games { padding: clamp(72px, 10vw, 128px) 0; }
